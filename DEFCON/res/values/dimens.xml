@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="big_text">30dp</dimen>
+    <dimen name="big_button">40dp</dimen>
+    <dimen name="text">13dp</dimen>
+    
+</resources>

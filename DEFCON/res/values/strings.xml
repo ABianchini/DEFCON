@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DEFCON</string>
+    <string name="defcon_one">DEFCON 1</string>
+    <string name="defcon_two">DEFCON 2</string>
+    <string name="defcon_three">DEFCON 3</string>
+    <string name="defcon_four">DEFCON 4</string>
+    <string name="defcon_five">DEFCON 5</string>
+    <string name="changelog">Changelog</string>
+    <string name="settings">Settings</string>
+    <string name="setting_notif">Enable Notifications</string>
+
+</resources>

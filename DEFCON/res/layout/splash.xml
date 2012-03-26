@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/black" >
+    
+	<TextView
+	    android:id="@+id/TextView_DefconTitle"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/app_name"
+	    android:textSize="@dimen/big_button"
+	    android:textColor="@color/grey"
+	    android:layout_gravity="center" />
+	
+	<ImageView
+	    android:id="@+id/ImageView_DefconLogo"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="center" />
+
+</LinearLayout>
