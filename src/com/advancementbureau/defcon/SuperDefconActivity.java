@@ -8,5 +8,6 @@ public class SuperDefconActivity extends Activity {
 	
 	public static final String PREFERENCES_NOTIFICATION = "notif";
 	public static final String FIRST_BOOT = "boot";
+	public static final String DEFCON = "currentState";
 	 
 }

@@ -1,6 +1,5 @@
 package com.advancementbureau.defcon;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -9,6 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class DefconActivity extends SuperDefconActivity {
 	
@@ -28,6 +30,17 @@ public class DefconActivity extends SuperDefconActivity {
             PopUp();
         }
     }
+    
+    public void onClick(View v) {
+    	LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
+    	if (v.equals(defOne)) {
+    		Toast.makeText(this, "click", 2000).show();
+    	}
+    }
+    
+    /*public void onClickDefconOne(View view) {
+    	Toast.makeText(this, "click", 2000).show();
+    }*/
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
