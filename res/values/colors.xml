@@ -5,6 +5,11 @@
     <color name="three_color">#ffff0f</color>
     <color name="two_color">#ff0000</color>
     <color name="one_color">#ffffff</color>
+    <color name="five_color_fade">#00007f</color>
+    <color name="four_color_fade">#038303</color>
+    <color name="three_color_fade">#9f9f09</color>
+    <color name="two_color_fade">#9f0000</color>
+    <color name="one_color_fade">#7f7f7f</color>
     <color name="grey">#cacaca</color>
     <color name="black">#000000</color>
     

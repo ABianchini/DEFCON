@@ -8,7 +8,7 @@
         android:id="@+id/LinearLayout_DefconOne"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_button"
-        android:background="@color/one_color"
+        android:background="@color/one_color_fade"
         android:orientation="horizontal"
         android:clickable="true">
         <TextView
@@ -32,7 +32,7 @@
         android:id="@+id/LinearLayout_DefconTwo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_button"
-        android:background="@color/two_color"
+        android:background="@color/two_color_fade"
         android:orientation="horizontal"
         android:clickable="true">
         <TextView
@@ -56,7 +56,7 @@
         android:id="@+id/LinearLayout_DefconThree"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_button"
-        android:background="@color/three_color"
+        android:background="@color/three_color_fade"
         android:orientation="horizontal"
         android:clickable="true">
         <TextView
@@ -80,7 +80,7 @@
         android:id="@+id/LinearLayout_DefconFour"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_button"
-        android:background="@color/four_color"
+        android:background="@color/four_color_fade"
         android:orientation="horizontal"
         android:clickable="true">
         <TextView
@@ -104,7 +104,7 @@
         android:id="@+id/LinearLayout_DefconFive"
         android:layout_width="match_parent"
         android:layout_height="@dimen/big_button"
-        android:background="@color/five_color"
+        android:background="@color/five_color_fade"
         android:orientation="horizontal"
         android:clickable="true">
         <TextView

@@ -1,10 +1,12 @@
 package com.advancementbureau.defcon;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,21 +26,33 @@ public class DefconActivity extends SuperDefconActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
-        /*if (mGameSettings.contains(DEFCON)) {
+        //SharedPreferences defPref = getSharedPreferences(DEFCON, MODE_PRIVATE);
+        //SharedPreferences.Editor defEditor = defPref.edit();
+        colors(mGameSettings.getInt(DEFCON, 0));
+        
+        final LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
+        final LinearLayout defTwo = (LinearLayout) findViewById(R.id.LinearLayout_DefconTwo);
+        final LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
+        final LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
+        final LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
+        
+        if (mGameSettings.contains(DEFCON)) {
 			currentDefcon = mGameSettings.getInt(DEFCON, 0);
-		}*/
+		}
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
             editor.commit();
             PopUp(R.string.pop_notif, R.string.pop_notif_info); 
-            }
+        }
         
-        LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
         defOne.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
-        		storeIt(1);
+        		currentDefcon = 1;
+        		toastIt(currentDefcon);
+        		colors(1);
         	}
         });
         defOne.setOnLongClickListener(new View.OnLongClickListener() {
@@ -48,10 +62,11 @@ public class DefconActivity extends SuperDefconActivity {
         	}
         });
         
-        LinearLayout defTwo = (LinearLayout) findViewById(R.id.LinearLayout_DefconTwo);
         defTwo.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
-        		storeIt(2);
+        		currentDefcon = 2;
+        		toastIt(currentDefcon);
+        		colors(2);
         	}
         });
         defTwo.setOnLongClickListener(new View.OnLongClickListener() {
@@ -61,10 +76,11 @@ public class DefconActivity extends SuperDefconActivity {
         	}
         });
         
-        LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
         defThree.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
-        		storeIt(3);
+        		currentDefcon = 3;
+        		toastIt(currentDefcon);
+        		colors(3);
         	}
         });
         defThree.setOnLongClickListener(new View.OnLongClickListener() {
@@ -74,10 +90,11 @@ public class DefconActivity extends SuperDefconActivity {
         	}
         });
         
-        LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
         defFour.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
-        		storeIt(4);
+        		currentDefcon = 4;
+        		toastIt(currentDefcon);
+        		colors(4);
         	}
         });
         defFour.setOnLongClickListener(new View.OnLongClickListener() {
@@ -87,10 +104,11 @@ public class DefconActivity extends SuperDefconActivity {
         	}
         });
         
-        LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
         defFive.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
-        		storeIt(5);
+        		currentDefcon = 5;
+        		toastIt(currentDefcon);
+        		colors(5);
         	}
         });
         defFive.setOnLongClickListener(new View.OnLongClickListener() {
@@ -102,6 +120,13 @@ public class DefconActivity extends SuperDefconActivity {
         
     }
     
+    @Override
+    protected void onPause() {
+    	super.onPause();
+    	Editor editor = mGameSettings.edit();
+    	editor.putInt(DEFCON, currentDefcon);
+    	editor.commit();
+    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,14 +143,6 @@ public class DefconActivity extends SuperDefconActivity {
     	return true;
     }
     
-    public void storeIt(int i) {
-    	Toast.makeText(this, "Defcon " + i, 2000).show();
-    	SharedPreferences defPref = getSharedPreferences(DEFCON, MODE_PRIVATE);
-        SharedPreferences.Editor defEditor = defPref.edit();
-    	defEditor.putInt("boot", i);
-        defEditor.commit();
-    }
-    
     public void PopUp(int title, int message){
         new AlertDialog.Builder(this)
         .setTitle(title)
@@ -135,5 +152,56 @@ public class DefconActivity extends SuperDefconActivity {
             	firstBootDone = false;
             }
         }).show();
+    }
+    
+    public void toastIt(int i) {
+    	Toast.makeText(this, "Defcon "+i, 1000).show();
+    }
+    
+    public void colors(int i) {
+    	final LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
+        final LinearLayout defTwo = (LinearLayout) findViewById(R.id.LinearLayout_DefconTwo);
+        final LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
+        final LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
+        final LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
+        
+    	switch (i) {
+    		case 0: defOne.setBackgroundResource(R.color.one_color_fade);
+					defTwo.setBackgroundResource(R.color.two_color_fade);
+					defThree.setBackgroundResource(R.color.three_color_fade);
+			    	defFour.setBackgroundResource(R.color.four_color_fade);
+			    	defFive.setBackgroundResource(R.color.five_color_fade);
+			    	break;
+	    	case 1: defOne.setBackgroundResource(R.color.one_color);
+	    			defTwo.setBackgroundResource(R.color.two_color_fade);
+	    			defThree.setBackgroundResource(R.color.three_color_fade);
+			    	defFour.setBackgroundResource(R.color.four_color_fade);
+			    	defFive.setBackgroundResource(R.color.five_color_fade);
+			    	break;
+	    	case 2: defOne.setBackgroundResource(R.color.one_color_fade);
+					defTwo.setBackgroundResource(R.color.two_color);
+					defThree.setBackgroundResource(R.color.three_color_fade);
+			    	defFour.setBackgroundResource(R.color.four_color_fade);
+			    	defFive.setBackgroundResource(R.color.five_color_fade);
+			    	break;
+	    	case 3: defOne.setBackgroundResource(R.color.one_color_fade);
+					defTwo.setBackgroundResource(R.color.two_color_fade);
+					defThree.setBackgroundResource(R.color.three_color);
+			    	defFour.setBackgroundResource(R.color.four_color_fade);
+			    	defFive.setBackgroundResource(R.color.five_color_fade);
+			    	break;
+	    	case 4: defOne.setBackgroundResource(R.color.one_color_fade);
+					defTwo.setBackgroundResource(R.color.two_color_fade);
+					defThree.setBackgroundResource(R.color.three_color_fade);
+			    	defFour.setBackgroundResource(R.color.four_color);
+			    	defFive.setBackgroundResource(R.color.five_color_fade);
+			    	break;
+	    	case 5: defOne.setBackgroundResource(R.color.one_color_fade);
+					defTwo.setBackgroundResource(R.color.two_color_fade);
+					defThree.setBackgroundResource(R.color.three_color_fade);
+			    	defFour.setBackgroundResource(R.color.four_color_fade);
+			    	defFive.setBackgroundResource(R.color.five_color);
+			    	break;
+    	}
     }
 }

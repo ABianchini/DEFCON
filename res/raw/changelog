@@ -3,3 +3,5 @@
 0.1.2 - All first boot actions are finalized along with settings
 
 0.2 - Main activity is nearly done. Some problems with setting the initial Defense Status. Only need visible indication of current Defense State.
+
+1.0 - The application is done in a very basic sense. Next step, notification regarding each Defense State.
