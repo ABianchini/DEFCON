@@ -10,9 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DefconSplashActivity extends Activity {
-	
-	public static final String FIRST_BOOT = "boot";
+public class DefconSplashActivity extends SuperDefconActivity {
 	
     /** Called when the activity is first created. */
     @Override
@@ -20,11 +18,8 @@ public class DefconSplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
-        SharedPreferences.Editor editor = bootPref.edit();
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	Animate();
-        	editor.putBoolean("boot", false);
-            editor.commit();
         } else {
         	startActivity(new Intent(DefconSplashActivity.this, DefconActivity.class));
     		DefconSplashActivity.this.finish();
@@ -32,9 +27,9 @@ public class DefconSplashActivity extends Activity {
     }
     
     private void Animate() {
-    	TextView FRC = (TextView) findViewById(R.id.TextView_DefconTitle);
+    	TextView defconText = (TextView) findViewById(R.id.TextView_DefconTitle);
     	Animation fade1 = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-    	FRC.startAnimation(fade1);
+    	defconText.startAnimation(fade1);
     	ImageView logo = (ImageView) findViewById(R.id.ImageView_DefconLogo);
     	Animation fade2 = AnimationUtils.loadAnimation(this, R.anim.fade_in2);
     	logo.startAnimation(fade2);
