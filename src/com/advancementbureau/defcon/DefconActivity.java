@@ -27,16 +27,19 @@ public class DefconActivity extends SuperDefconActivity {
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
             editor.commit();
-            PopUp();
-        }
+            PopUp(); 
+            }
+        LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
+        
+        defOne.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View view) {
+        		toastIt();
+        	}
+        });
+        
     }
     
-    public void onClick(View v) {
-    	LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
-    	if (v.equals(defOne)) {
-    		Toast.makeText(this, "click", 2000).show();
-    	}
-    }
+    
     
     /*public void onClickDefconOne(View view) {
     	Toast.makeText(this, "click", 2000).show();
@@ -56,6 +59,11 @@ public class DefconActivity extends SuperDefconActivity {
     	startActivity(item.getIntent());
     	return true;
     }
+    
+    public void toastIt() {
+    	Toast.makeText(this, "click", 2000).show();
+    }
+    
     public void PopUp(){
         new AlertDialog.Builder(this)
         .setTitle(R.string.pop_notif)
