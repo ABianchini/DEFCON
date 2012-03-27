@@ -26,9 +26,9 @@ public class DefconActivity extends SuperDefconActivity {
         setContentView(R.layout.main);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
-        if (mGameSettings.contains(DEFCON)) {
+        /*if (mGameSettings.contains(DEFCON)) {
 			currentDefcon = mGameSettings.getInt(DEFCON, 0);
-		}
+		}*/
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
             editor.commit();
@@ -126,10 +126,6 @@ public class DefconActivity extends SuperDefconActivity {
         defEditor.commit();
     }
     
-    /*
-     * Used to make a simple dialog box
-     * Requires int id of a title string and message string
-     */
     public void PopUp(int title, int message){
         new AlertDialog.Builder(this)
         .setTitle(title)
