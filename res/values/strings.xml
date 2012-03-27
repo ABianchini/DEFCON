@@ -13,6 +13,16 @@
     <string name="setting_notif_desc">If checked, a notification will remain in the task bar reminding you of what Defense Condition you are in.</string>
 	<string name="pop_notif">Notifications</string>
 	<string name="pop_notif_info">By default this application will show have a notification always in the task bar displaying what Defense Condition you are in. To change this, go to the Settings and uncheck the box.</string>
+	<string name="defcon_one_pop">Defcon 1</string>
+	<string name="defcon_two_pop">Defcon 2</string>
+	<string name="defcon_three_pop">Defcon 3</string>
+	<string name="defcon_four_pop">Defcon 4</string>
+	<string name="defcon_five_pop">Defcon 5</string>
+	<string name="defcon_one_info">Defcon one is the worst state of emergency. Everything\'s gone to hell. Cut your losses and get out.</string>
+	<string name="defcon_two_info">Defcon two is very bad. Nearly everything is lost. There is little hope of success, but it\'s not over until it\'s over.</string>
+	<string name="defcon_three_info">Defcon three is bad. Things are quite challenging and require lots of attention. Work hard and carefully and you'll make it out of here alive.</string>
+	<string name="defcon_four_info">Defcon four requires an alert mind. There are major hints of things going wrong and you must address them immediately.</string>
+	<string name="defcon_five_info">Defcon five is a state of peace. Remain alert to prevent entering Defcon 4, but there are no serious threats at this time.</string>
 	
     
 </resources>

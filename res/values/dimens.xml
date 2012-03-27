@@ -2,7 +2,7 @@
 <resources>
     <dimen name="big_text">50dp</dimen>
     <dimen name="number">80dp</dimen>
-    <dimen name="big_button">75dp</dimen>
+    <dimen name="big_button">92dp</dimen>
     <dimen name="text">16dp</dimen>
     <dimen name="title_text">19dp</dimen>
     <dimen name="splash_text">50dp</dimen>
