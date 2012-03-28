@@ -18,11 +18,11 @@
 	<string name="defcon_three_pop">Defcon 3</string>
 	<string name="defcon_four_pop">Defcon 4</string>
 	<string name="defcon_five_pop">Defcon 5</string>
-	<string name="defcon_one_info">Defcon one is the worst state of emergency. Everything\'s gone to hell. Cut your losses and get out.</string>
-	<string name="defcon_two_info">Defcon two is very bad. Nearly everything is lost. There is little hope of success, but it\'s not over until it\'s over.</string>
-	<string name="defcon_three_info">Defcon three is bad. Things are quite challenging and require lots of attention. Work hard and carefully and you\'ll make it out of here alive.</string>
-	<string name="defcon_four_info">Defcon four requires an alert mind. There are major hints of things going wrong and you must address them immediately.</string>
-	<string name="defcon_five_info">Defcon five is a state of peace. Remain alert to prevent entering Defcon 4, but there are no serious threats at this time.</string>
+	<string name="defcon_one_info">Instability has taken over and remained. All operations halted or destroyed. Everything is lost. SAVE WHAT YOU CAN AND GET OUT.</string>
+	<string name="defcon_two_info">Instability has taken over. All operations halted in order to re-establishe stability. Everything is on the line. STOP EVERYTHING AND RESTORE STABILITY.</string>
+	<string name="defcon_three_info">Instability is present and has the capability of taking over at any moment. Operations are still underway but are at great risk. REMAIN VIGILANT.</string>
+	<string name="defcon_four_info">Instability is present but supressed. At risk operations are halted. Not too much can go wrong. REMAIN ALERT.</string>
+	<string name="defcon_five_info">Stability is present. There is no instability in sight. All operations continue as usual. Remain ALERT</string>
 	
     
 </resources>
