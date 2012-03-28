@@ -67,9 +67,10 @@ public class DefconActivity extends SuperDefconActivity {
         
         defTwo.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		defconNotify(2);
         		currentDefcon = 2;
         		toastIt(currentDefcon);
-        		colors(2);
+        		colors(currentDefcon);
         	}
         });
         defTwo.setOnLongClickListener(new View.OnLongClickListener() {
@@ -81,9 +82,10 @@ public class DefconActivity extends SuperDefconActivity {
         
         defThree.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		defconNotify(3);
         		currentDefcon = 3;
         		toastIt(currentDefcon);
-        		colors(3);
+        		colors(currentDefcon);
         	}
         });
         defThree.setOnLongClickListener(new View.OnLongClickListener() {
@@ -95,9 +97,10 @@ public class DefconActivity extends SuperDefconActivity {
         
         defFour.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		defconNotify(4);
         		currentDefcon = 4;
         		toastIt(currentDefcon);
-        		colors(4);
+        		colors(currentDefcon);
         	}
         });
         defFour.setOnLongClickListener(new View.OnLongClickListener() {
@@ -109,9 +112,10 @@ public class DefconActivity extends SuperDefconActivity {
         
         defFive.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		defconNotify(5);
         		currentDefcon = 5;
         		toastIt(currentDefcon);
-        		colors(5);
+        		colors(currentDefcon);
         	}
         });
         defFive.setOnLongClickListener(new View.OnLongClickListener() {
@@ -180,32 +184,32 @@ public class DefconActivity extends SuperDefconActivity {
 		notificationDefOne.setLatestEventInfo(context1, "Defcon 1", "SAVE WHAT YOU CAN AND GET OUT.", contentIntent1);
 		final int DEF_ONE = 1;
 		
-		Notification notificationDefTwo = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Notification notificationDefTwo = new Notification(R.drawable.defcon_two, "Defcon 2", System.currentTimeMillis());
 		Context context2 = getApplicationContext();
 		Intent notificationIntent2 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent2 = PendingIntent.getActivity(this, 0, notificationIntent2, 0);
-		notificationDefOne.setLatestEventInfo(context2, "Defcon 2", "STOP EVERYTHING AND RESTORE STABILITY.", contentIntent2);
+		notificationDefTwo.setLatestEventInfo(context2, "Defcon 2", "STOP EVERYTHING AND RESTORE STABILITY.", contentIntent2);
 		final int DEF_TWO = 2;
 		
-		Notification notificationDefThree = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Notification notificationDefThree = new Notification(R.drawable.defcon_three, "Defcon 3", System.currentTimeMillis());
 		Context context3 = getApplicationContext();
 		Intent notificationIntent3 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent3 = PendingIntent.getActivity(this, 0, notificationIntent3, 0);
-		notificationDefOne.setLatestEventInfo(context2, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
+		notificationDefThree.setLatestEventInfo(context2, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
 		final int DEF_THREE = 3;
 		
-		Notification notificationDefFour = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Notification notificationDefFour = new Notification(R.drawable.defcon_four, "Defcon 4", System.currentTimeMillis());
 		Context context4 = getApplicationContext();
 		Intent notificationIntent4 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent4 = PendingIntent.getActivity(this, 0, notificationIntent4, 0);
-		notificationDefOne.setLatestEventInfo(context2, "Defcon 4", "REMAIN ALERT.", contentIntent4);
+		notificationDefFour.setLatestEventInfo(context2, "Defcon 4", "REMAIN ALERT.", contentIntent4);
 		final int DEF_FOUR = 4;
 		
-		Notification notificationDefFive = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Notification notificationDefFive = new Notification(R.drawable.defcon_five, "Defcon 5", System.currentTimeMillis());
 		Context context5 = getApplicationContext();
 		Intent notificationIntent5 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent5 = PendingIntent.getActivity(this, 0, notificationIntent5, 0);
-		notificationDefOne.setLatestEventInfo(context2, "Defcon 5", "Remain ALERT.", contentIntent5);
+		notificationDefFive.setLatestEventInfo(context2, "Defcon 5", "Remain ALERT.", contentIntent5);
 		final int DEF_FIVE = 5;
 		
 		mNotificationManager.cancel(DEF_ONE);
