@@ -1,6 +1,9 @@
 package com.advancementbureau.defcon;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -29,8 +32,7 @@ public class DefconActivity extends SuperDefconActivity {
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
-        //SharedPreferences defPref = getSharedPreferences(DEFCON, MODE_PRIVATE);
-        //SharedPreferences.Editor defEditor = defPref.edit();
+        
         colors(mGameSettings.getInt(DEFCON, 0));
         
         final LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
@@ -50,9 +52,10 @@ public class DefconActivity extends SuperDefconActivity {
         
         defOne.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		defconNotify(1);
         		currentDefcon = 1;
         		toastIt(currentDefcon);
-        		colors(1);
+        		colors(currentDefcon);
         	}
         });
         defOne.setOnLongClickListener(new View.OnLongClickListener() {
@@ -120,12 +123,13 @@ public class DefconActivity extends SuperDefconActivity {
         
     }
     
-    @Override
+	@Override
     protected void onPause() {
     	super.onPause();
     	Editor editor = mGameSettings.edit();
     	editor.putInt(DEFCON, currentDefcon);
     	editor.commit();
+    	
     }
     
     @Override
@@ -163,6 +167,73 @@ public class DefconActivity extends SuperDefconActivity {
     
     public void toastIt(int i) {
     	Toast.makeText(this, "Defcon "+i, 1000).show();
+    }
+    
+    public void defconNotify(int i) {
+    	String ns = Context.NOTIFICATION_SERVICE;
+    	NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+    	
+    	Notification notificationDefOne = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Context context1 = getApplicationContext();
+		Intent notificationIntent1 = new Intent(this, DefconActivity.class);
+		PendingIntent contentIntent1 = PendingIntent.getActivity(this, 0, notificationIntent1, 0);
+		notificationDefOne.setLatestEventInfo(context1, "Defcon 1", "SAVE WHAT YOU CAN AND GET OUT.", contentIntent1);
+		final int DEF_ONE = 1;
+		
+		Notification notificationDefTwo = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Context context2 = getApplicationContext();
+		Intent notificationIntent2 = new Intent(this, DefconActivity.class);
+		PendingIntent contentIntent2 = PendingIntent.getActivity(this, 0, notificationIntent2, 0);
+		notificationDefOne.setLatestEventInfo(context2, "Defcon 2", "STOP EVERYTHING AND RESTORE STABILITY.", contentIntent2);
+		final int DEF_TWO = 2;
+		
+		Notification notificationDefThree = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Context context3 = getApplicationContext();
+		Intent notificationIntent3 = new Intent(this, DefconActivity.class);
+		PendingIntent contentIntent3 = PendingIntent.getActivity(this, 0, notificationIntent3, 0);
+		notificationDefOne.setLatestEventInfo(context2, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
+		final int DEF_THREE = 3;
+		
+		Notification notificationDefFour = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Context context4 = getApplicationContext();
+		Intent notificationIntent4 = new Intent(this, DefconActivity.class);
+		PendingIntent contentIntent4 = PendingIntent.getActivity(this, 0, notificationIntent4, 0);
+		notificationDefOne.setLatestEventInfo(context2, "Defcon 4", "REMAIN ALERT.", contentIntent4);
+		final int DEF_FOUR = 4;
+		
+		Notification notificationDefFive = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
+		Context context5 = getApplicationContext();
+		Intent notificationIntent5 = new Intent(this, DefconActivity.class);
+		PendingIntent contentIntent5 = PendingIntent.getActivity(this, 0, notificationIntent5, 0);
+		notificationDefOne.setLatestEventInfo(context2, "Defcon 5", "Remain ALERT.", contentIntent5);
+		final int DEF_FIVE = 5;
+		
+		mNotificationManager.cancel(DEF_ONE);
+		mNotificationManager.cancel(DEF_TWO);
+		mNotificationManager.cancel(DEF_THREE);
+		mNotificationManager.cancel(DEF_FOUR);
+		mNotificationManager.cancel(DEF_FIVE);
+    	
+    	if (i == 1) {
+    		mNotificationManager.notify(DEF_ONE, notificationDefOne);
+    		notificationDefOne.flags |= Notification.FLAG_NO_CLEAR;
+    	}
+    	if (i == 2) {
+    		mNotificationManager.notify(DEF_TWO, notificationDefTwo);
+    		notificationDefTwo.flags |= Notification.FLAG_NO_CLEAR;
+    	}
+    	if (i == 3) {
+    		mNotificationManager.notify(DEF_THREE, notificationDefThree);
+    		notificationDefThree.flags |= Notification.FLAG_NO_CLEAR;
+    	}
+    	if (i == 4) {
+    		mNotificationManager.notify(DEF_FOUR, notificationDefFour);
+    		notificationDefFour.flags |= Notification.FLAG_NO_CLEAR;
+    	}
+    	if (i == 5) {
+    		mNotificationManager.notify(DEF_FIVE, notificationDefFive);
+    		notificationDefFive.flags |= Notification.FLAG_NO_CLEAR;
+    	}
     }
     
     public void colors(int i) {
