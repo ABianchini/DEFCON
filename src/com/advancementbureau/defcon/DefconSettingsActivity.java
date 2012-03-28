@@ -22,6 +22,11 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         ActionBar actionBar2 = getActionBar();
         actionBar2.setDisplayHomeAsUpEnabled(true);
+        
+        final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
+        if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
+        	checkBox.setChecked(true);
+        }
     }
     @Override
 	protected void onPause() {

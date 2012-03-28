@@ -134,12 +134,19 @@ public class DefconActivity extends SuperDefconActivity {
     	getMenuInflater().inflate(R.menu.mainoptions, menu);
     	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, DefconSettingsActivity.class));
     	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, DefconChangelogActivity.class));
+    	menu.findItem(R.id.about_menu_item);
     	return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	super.onOptionsItemSelected(item);
-    	startActivity(item.getIntent());
+    	if (item.getItemId() == R.id.settings_menu_item) {
+			startActivity(item.getIntent()); }
+    	if (item.getItemId() == R.id.changelog_menu_item) {
+    		startActivity(item.getIntent()); }
+    	if (item.getItemId() == R.id.about_menu_item) {
+    		PopUp(R.string.about, R.string.about_pop_info);
+    	}
     	return true;
     }
     

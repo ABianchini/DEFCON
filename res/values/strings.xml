@@ -23,6 +23,8 @@
 	<string name="defcon_three_info">Instability is present and has the capability of taking over at any moment. Operations are still underway but are at great risk. REMAIN VIGILANT.</string>
 	<string name="defcon_four_info">Instability is present but supressed. At risk operations are halted. Not too much can go wrong. REMAIN ALERT.</string>
 	<string name="defcon_five_info">Stability is present. There is no instability in sight. All operations continue as usual. Remain ALERT</string>
+	<string name="about">About</string>
+	<string name="about_pop_info">DEFCON is an application for keeping a Defense Status on your life. There is little use for this app, except to keep a running tab on your projects and operations. Long press each Defense Status for more information about it.</string>
 	
     
 </resources>
