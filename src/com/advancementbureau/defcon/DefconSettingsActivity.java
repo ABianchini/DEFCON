@@ -23,10 +23,12 @@ public class DefconSettingsActivity extends SuperDefconActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        //Shared preferences defining
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         ActionBar actionBar2 = getActionBar();
         actionBar2.setDisplayHomeAsUpEnabled(true);
         
+        //checks or unchecks the checkbox depending on the status of PREFERENCES_NOTIFICATION
         final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
             checkBox.setChecked(true);
@@ -38,12 +40,16 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 	protected void onPause() {
 		super.onPause();
 		
+		//commits notifChecked to PREFERENCES_NOTIFICATION
 		Editor editor = mGameSettings.edit();
 		editor.putBoolean(PREFERENCES_NOTIFICATION, notifChecked);
 
 		editor.commit();
 	}
     
+    /*
+     * Converts the state of the checkbox to the notifChecked variable
+     */
     public void onCheckBoxNotificationsClicked(View v) {
     	final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (checkBox.isChecked()) {
@@ -54,6 +60,11 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         PopUp(R.string.reselect, R.string.reselect_info);
     }
     
+    /*
+     * Makes a dialog box with a title and a message. Used for simple notifications
+     * @param title string id for the title
+     * @param message string id for the message
+    */
     public void PopUp(int title, int message){
         new AlertDialog.Builder(this)
         .setTitle(title)
@@ -64,7 +75,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
     }
     
     
-    
+    //for the "up" button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	super.onOptionsItemSelected(item);

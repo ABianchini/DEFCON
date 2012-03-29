@@ -295,6 +295,8 @@ public class DefconActivity extends SuperDefconActivity {
 		mNotificationManager.cancel(DEF_THREE);
 		mNotificationManager.cancel(DEF_FOUR);
 		mNotificationManager.cancel(DEF_FIVE);
+		
+		//notifies the user of what defcon your in
 		if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
 	    	if (i == 1) {
 	    		mNotificationManager.notify(DEF_ONE, notificationDefOne);
@@ -311,7 +313,8 @@ public class DefconActivity extends SuperDefconActivity {
 	    	if (i == 5) {
 	    		mNotificationManager.notify(DEF_FIVE, notificationDefFive);
 	    	}
-    	} else {
+    	} //if there is no taskbar notification, the toast runs
+		else {
     		if (i == 1) {
     			toastIt(1);
     		} if (i == 2) {
@@ -344,13 +347,19 @@ public class DefconActivity extends SuperDefconActivity {
     	fos.close();
     }
     
+    /*
+     * changes the colors of the Defense Statuses to reflect the current Defense Status
+     * @param i identifies the currently selected defcon
+     */
     public void colors(int i) {
+    	//defines the objects for buttons
     	final LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
         final LinearLayout defTwo = (LinearLayout) findViewById(R.id.LinearLayout_DefconTwo);
         final LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
         final LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
         final LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
         
+        //changes colors
     	switch (i) {
     		case 0: defOne.setBackgroundResource(R.color.one_color_fade);
 					defTwo.setBackgroundResource(R.color.two_color_fade);
