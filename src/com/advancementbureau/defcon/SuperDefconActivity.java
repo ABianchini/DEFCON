@@ -10,5 +10,7 @@ public class SuperDefconActivity extends Activity {
 	public static final String FIRST_BOOT = "boot";
 	public static final String DEFCON = "currentState";
 	public static final String NOTIFICATION_PRESENT = "here";
+	
+	public int currentDefcon;
 	 
 }

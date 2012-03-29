@@ -1,12 +1,16 @@
 package com.advancementbureau.defcon;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 
 public class DefconSettingsActivity extends SuperDefconActivity {
@@ -23,25 +27,35 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         ActionBar actionBar2 = getActionBar();
         actionBar2.setDisplayHomeAsUpEnabled(true);
         
-        final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
-        if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
-        	checkBox.setChecked(true);
-        }
     }
     @Override
 	protected void onPause() {
 		super.onPause();
-		
-		final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
-        if (checkBox.isChecked()) {
-            notifChecked = true;
-        }
 		
 		Editor editor = mGameSettings.edit();
 		editor.putBoolean(PREFERENCES_NOTIFICATION, notifChecked);
 
 		editor.commit();
 	}
+    
+    public void onCheckBoxNotificationsClicked(View v) {
+    	final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
+        if (checkBox.isChecked()) {
+            notifChecked = true;
+        } else {
+        	notifChecked = false;
+        }
+        PopUp(R.string.reselect, R.string.reselect_info);
+    }
+    
+    public void PopUp(int title, int message){
+        new AlertDialog.Builder(this)
+        .setTitle(title)
+        .setMessage(message)
+        .setPositiveButton("Close", new OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {}
+        }).show();
+    }
     
     
     

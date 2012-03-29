@@ -6,13 +6,13 @@
         android:icon="@android:drawable/ic_menu_preferences"
         android:showAsAction="always|withText" ></item>
     <item
-        android:id="@+id/changelog_menu_item"
-        android:title="@string/changelog"
-        android:icon="@android:drawable/ic_menu_recent_history"
-        android:showAsAction="always|withText" ></item>
-    <item
         android:id="@+id/about_menu_item"
         android:title="@string/about"
         android:icon="@android:drawable/ic_menu_info_details"
+        android:showAsAction="withText" ></item>
+    <item
+        android:id="@+id/changelog_menu_item"
+        android:title="@string/changelog"
+        android:icon="@android:drawable/ic_menu_recent_history"
         android:showAsAction="never" ></item>
 	</menu>

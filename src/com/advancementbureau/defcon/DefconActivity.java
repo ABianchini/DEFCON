@@ -21,7 +21,6 @@ public class DefconActivity extends SuperDefconActivity {
 	
 	SharedPreferences mGameSettings;
 	public boolean firstBootDone;
-	public int currentDefcon;
 	public int infoDefcon;
 	
     /** Called when the activity is first created. */
@@ -54,7 +53,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(1);
         		currentDefcon = 1;
-        		toastIt(currentDefcon);
+        		//toastIt(currentDefcon);
         		colors(currentDefcon);
         	}
         });
@@ -69,7 +68,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(2);
         		currentDefcon = 2;
-        		toastIt(currentDefcon);
+        		//toastIt(currentDefcon);
         		colors(currentDefcon);
         	}
         });
@@ -84,7 +83,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(3);
         		currentDefcon = 3;
-        		toastIt(currentDefcon);
+        		//toastIt(currentDefcon);
         		colors(currentDefcon);
         	}
         });
@@ -99,7 +98,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(4);
         		currentDefcon = 4;
-        		toastIt(currentDefcon);
+        		//toastIt(currentDefcon);
         		colors(currentDefcon);
         	}
         });
@@ -114,7 +113,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(5);
         		currentDefcon = 5;
-        		toastIt(currentDefcon);
+        		//toastIt(currentDefcon);
         		colors(currentDefcon);
         	}
         });
@@ -182,6 +181,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Intent notificationIntent1 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent1 = PendingIntent.getActivity(this, 0, notificationIntent1, 0);
 		notificationDefOne.setLatestEventInfo(context1, "Defcon 1", "SAVE WHAT YOU CAN AND GET OUT.", contentIntent1);
+		notificationDefOne.flags = Notification.FLAG_ONGOING_EVENT; 
 		final int DEF_ONE = 1;
 		
 		Notification notificationDefTwo = new Notification(R.drawable.defcon_two, "Defcon 2", System.currentTimeMillis());
@@ -189,6 +189,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Intent notificationIntent2 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent2 = PendingIntent.getActivity(this, 0, notificationIntent2, 0);
 		notificationDefTwo.setLatestEventInfo(context2, "Defcon 2", "STOP EVERYTHING AND RESTORE STABILITY.", contentIntent2);
+		notificationDefTwo.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_TWO = 2;
 		
 		Notification notificationDefThree = new Notification(R.drawable.defcon_three, "Defcon 3", System.currentTimeMillis());
@@ -196,6 +197,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Intent notificationIntent3 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent3 = PendingIntent.getActivity(this, 0, notificationIntent3, 0);
 		notificationDefThree.setLatestEventInfo(context2, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
+		notificationDefThree.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_THREE = 3;
 		
 		Notification notificationDefFour = new Notification(R.drawable.defcon_four, "Defcon 4", System.currentTimeMillis());
@@ -203,6 +205,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Intent notificationIntent4 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent4 = PendingIntent.getActivity(this, 0, notificationIntent4, 0);
 		notificationDefFour.setLatestEventInfo(context2, "Defcon 4", "REMAIN ALERT.", contentIntent4);
+		notificationDefFour.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_FOUR = 4;
 		
 		Notification notificationDefFive = new Notification(R.drawable.defcon_five, "Defcon 5", System.currentTimeMillis());
@@ -210,33 +213,43 @@ public class DefconActivity extends SuperDefconActivity {
 		Intent notificationIntent5 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent5 = PendingIntent.getActivity(this, 0, notificationIntent5, 0);
 		notificationDefFive.setLatestEventInfo(context2, "Defcon 5", "Remain ALERT.", contentIntent5);
+		notificationDefFive.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_FIVE = 5;
+	
 		
 		mNotificationManager.cancel(DEF_ONE);
 		mNotificationManager.cancel(DEF_TWO);
 		mNotificationManager.cancel(DEF_THREE);
 		mNotificationManager.cancel(DEF_FOUR);
 		mNotificationManager.cancel(DEF_FIVE);
-    	
-    	if (i == 1) {
-    		mNotificationManager.notify(DEF_ONE, notificationDefOne);
-    		notificationDefOne.flags |= Notification.FLAG_NO_CLEAR;
-    	}
-    	if (i == 2) {
-    		mNotificationManager.notify(DEF_TWO, notificationDefTwo);
-    		notificationDefTwo.flags |= Notification.FLAG_NO_CLEAR;
-    	}
-    	if (i == 3) {
-    		mNotificationManager.notify(DEF_THREE, notificationDefThree);
-    		notificationDefThree.flags |= Notification.FLAG_NO_CLEAR;
-    	}
-    	if (i == 4) {
-    		mNotificationManager.notify(DEF_FOUR, notificationDefFour);
-    		notificationDefFour.flags |= Notification.FLAG_NO_CLEAR;
-    	}
-    	if (i == 5) {
-    		mNotificationManager.notify(DEF_FIVE, notificationDefFive);
-    		notificationDefFive.flags |= Notification.FLAG_NO_CLEAR;
+		if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
+	    	if (i == 1) {
+	    		mNotificationManager.notify(DEF_ONE, notificationDefOne);
+	    	}
+	    	if (i == 2) {
+	    		mNotificationManager.notify(DEF_TWO, notificationDefTwo);
+	    	}
+	    	if (i == 3) {
+	    		mNotificationManager.notify(DEF_THREE, notificationDefThree);
+	    	}
+	    	if (i == 4) {
+	    		mNotificationManager.notify(DEF_FOUR, notificationDefFour);
+	    	}
+	    	if (i == 5) {
+	    		mNotificationManager.notify(DEF_FIVE, notificationDefFive);
+	    	}
+    	} else {
+    		if (i == 1) {
+    			toastIt(1);
+    		} if (i == 2) {
+    			toastIt(2);
+    		} if (i == 3) {
+    			toastIt(3);
+    		} if (i == 4) {
+    			toastIt(4);
+    		} if (i == 5) {
+    			toastIt(5);
+    		}
     	}
     }
     

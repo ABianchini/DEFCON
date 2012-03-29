@@ -25,6 +25,8 @@
 	<string name="defcon_five_info">Stability is present. There is no instability in sight. All operations continue as usual. Remain ALERT</string>
 	<string name="about">About</string>
 	<string name="about_pop_info">DEFCON is an application for keeping a Defense Status on your life. There is little use for this app, except to keep a running tab on your projects and operations. Long press each Defense Status for more information about it.</string>
+	<string name="reselect">Reselect</string>
+	<string name="reselect_info">You must reselect the Defense Status in order to apply these setting change.</string>
 	
     
 </resources>
