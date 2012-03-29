@@ -1,5 +1,11 @@
 package com.advancementbureau.defcon;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -22,6 +28,7 @@ public class DefconActivity extends SuperDefconActivity {
 	SharedPreferences mGameSettings;
 	public boolean firstBootDone;
 	public int infoDefcon;
+	Date date = Calendar.getInstance().getTime();
 	
     /** Called when the activity is first created. */
     @Override
@@ -55,6 +62,11 @@ public class DefconActivity extends SuperDefconActivity {
         		currentDefcon = 1;
         		//toastIt(currentDefcon);
         		colors(currentDefcon);
+        		try {
+					keepLog(1);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
         	}
         });
         defOne.setOnLongClickListener(new View.OnLongClickListener() {
@@ -256,6 +268,24 @@ public class DefconActivity extends SuperDefconActivity {
     			toastIt(5);
     		}
     	}
+    }
+    
+    public void keepLog(int i) throws IOException {
+    	String insertString = null;
+		FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_APPEND|MODE_PRIVATE);
+    	if (i ==1) {
+    		insertString = "Defcon 1 " + date + "\n";
+    	}if (i ==2) {
+    		insertString = "Defcon 2 " + date + "\n";
+    	}if (i ==3) {
+    		insertString = "Defcon 3 " + date + "\n";
+    	}if (i ==4) {
+    		insertString = "Defcon 4 " + date + "\n";
+    	}if (i ==5) {
+    		insertString = "Defcon 5 " + date + "\n";
+    	}
+    	fos.write(insertString.getBytes());
+    	fos.close();
     }
     
     public void colors(int i) {

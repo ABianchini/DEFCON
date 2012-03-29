@@ -23,6 +23,7 @@
         <activity android:name="DefconSettingsActivity" android:icon="@android:drawable/ic_menu_preferences" android:label="@string/settings"></activity>
         <activity android:name="DefconChangelogActivity" android:icon="@android:drawable/ic_menu_recent_history" android:label="@string/changelog"></activity>
         <activity android:name="SuperDefconActivity"></activity>
+        <activity android:name="DefconLogActivity" android:label="@string/log"></activity>
     </application>
 
 </manifest>

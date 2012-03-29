@@ -27,6 +27,7 @@
 	<string name="about_pop_info">DEFCON is an application for keeping a Defense Status on your life. There is little use for this app, except to keep a running tabs on the status of your projects and operations. Long press each Defense Status for more information about it.</string>
 	<string name="reselect">Reselect</string>
 	<string name="reselect_info">You must reselect the Defense Status in order for the changes to apply.</string>
+	<string name="log">DEFCON Log</string>
 	
     
 </resources>
