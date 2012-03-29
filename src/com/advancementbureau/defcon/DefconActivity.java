@@ -1,6 +1,5 @@
 package com.advancementbureau.defcon;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -35,27 +34,38 @@ public class DefconActivity extends SuperDefconActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        //Defines SharedPreferences and editor for working with Shared Preferences in the onCreate method
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
         
+        //redefines colors for Defense Statuses on activity start
         colors(mGameSettings.getInt(DEFCON, 0));
         
+        //defines variables for Defense Statuses for later work
         final LinearLayout defOne = (LinearLayout) findViewById(R.id.LinearLayout_DefconOne);
         final LinearLayout defTwo = (LinearLayout) findViewById(R.id.LinearLayout_DefconTwo);
         final LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
         final LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
         final LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
         
+        //sets currentDefcon to the DEFCON preference and DEFCON to 0 if no defcon exists
         if (mGameSettings.contains(DEFCON)) {
 			currentDefcon = mGameSettings.getInt(DEFCON, 0);
 		}
+        
+        //Displays on first boot Dialog Box. 
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
             editor.commit();
             PopUp(R.string.pop_notif, R.string.pop_notif_info); 
         }
         
+        /*
+         * The next 10 statements run every time the Defense Status is clicked or long clicked
+         * Click: notification of status, changes colors of buttons, and records the log
+         * LongClick: Dialog box with info about the Defense Status
+         */
         defOne.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
         		defconNotify(1);
@@ -154,6 +164,9 @@ public class DefconActivity extends SuperDefconActivity {
         
     }
     
+    /*
+     * Saves current Defcon to DEFCON
+     */
 	@Override
     protected void onPause() {
     	super.onPause();
@@ -163,6 +176,9 @@ public class DefconActivity extends SuperDefconActivity {
     	
     }
     
+	/*
+	 * inflates the Action Bar's option menu
+	 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);
@@ -170,17 +186,28 @@ public class DefconActivity extends SuperDefconActivity {
     	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, DefconSettingsActivity.class));
     	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, DefconChangelogActivity.class));
     	menu.findItem(R.id.about_menu_item);
+    	menu.findItem(R.id.log_menu_item).setIntent(new Intent(this, DefconLogActivity.class));
     	return true;
     }
+    
+    /*
+     * Actions that occur when each menu item is clicked
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	super.onOptionsItemSelected(item);
+    	//Settings
     	if (item.getItemId() == R.id.settings_menu_item) {
 			startActivity(item.getIntent()); }
+    	//Changelog
     	if (item.getItemId() == R.id.changelog_menu_item) {
     		startActivity(item.getIntent()); }
+    	//About
     	if (item.getItemId() == R.id.about_menu_item) {
-    		PopUp(R.string.about, R.string.about_pop_info);
+    		PopUp(R.string.about, R.string.about_pop_info); }
+    	//Log
+    	if (item.getItemId() == R.id.log_menu_item) {
+    		startActivity(item.getIntent());
     	}
     	return true;
     }
@@ -201,19 +228,32 @@ public class DefconActivity extends SuperDefconActivity {
         }).show();
     }
     
+    /*
+     * Makes Toast Notification for current Defcon if Task Bar Notifications are off
+     * @param i for current Defcon
+     */
     public void toastIt(int i) {
     	Toast.makeText(this, "Defcon "+i, 1000).show();
     }
     
+    /*
+     * Notifications for current Defcon (Toast and task bar)
+     * @param i current Defcon
+     */
     public void defconNotify(int i) {
+    	//defines varaibles
     	String ns = Context.NOTIFICATION_SERVICE;
     	NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
     	
+    	//Creates notification with icon and text
     	Notification notificationDefOne = new Notification(R.drawable.defcon_one, "Defcon 1", System.currentTimeMillis());
 		Context context1 = getApplicationContext();
+		//intent for starting this activity when the notification is clicked
 		Intent notificationIntent1 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent1 = PendingIntent.getActivity(this, 0, notificationIntent1, 0);
+		//content of the notification after the initial notifying
 		notificationDefOne.setLatestEventInfo(context1, "Defcon 1", "SAVE WHAT YOU CAN AND GET OUT.", contentIntent1);
+		//Makes the notification ongoing
 		notificationDefOne.flags = Notification.FLAG_ONGOING_EVENT; 
 		final int DEF_ONE = 1;
 		
@@ -249,7 +289,7 @@ public class DefconActivity extends SuperDefconActivity {
 		notificationDefFive.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_FIVE = 5;
 	
-		
+		//cancels all other notifications about Defense statuses before creating a new one
 		mNotificationManager.cancel(DEF_ONE);
 		mNotificationManager.cancel(DEF_TWO);
 		mNotificationManager.cancel(DEF_THREE);

@@ -15,4 +15,9 @@
         android:title="@string/changelog"
         android:icon="@android:drawable/ic_menu_recent_history"
         android:showAsAction="never" ></item>
+    <item
+        android:id="@+id/log_menu_item"
+        android:title="@string/log"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:showAsAction="never" ></item>
 	</menu>
