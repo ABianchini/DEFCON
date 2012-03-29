@@ -80,7 +80,11 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(2);
         		currentDefcon = 2;
-        		//toastIt(currentDefcon);
+        		try {
+					keepLog(2);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
         		colors(currentDefcon);
         	}
         });
@@ -95,7 +99,11 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(3);
         		currentDefcon = 3;
-        		//toastIt(currentDefcon);
+        		try {
+					keepLog(3);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
         		colors(currentDefcon);
         	}
         });
@@ -110,7 +118,11 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(4);
         		currentDefcon = 4;
-        		//toastIt(currentDefcon);
+        		try {
+					keepLog(4);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
         		colors(currentDefcon);
         	}
         });
@@ -125,7 +137,11 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(5);
         		currentDefcon = 5;
-        		//toastIt(currentDefcon);
+        		try {
+					keepLog(5);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
         		colors(currentDefcon);
         	}
         });
