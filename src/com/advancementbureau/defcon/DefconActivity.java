@@ -157,6 +157,11 @@ public class DefconActivity extends SuperDefconActivity {
     	return true;
     }
     
+    /*
+     * Makes a dialog box with a title and a message. Used for simple notifications
+     * @param title string id for the title
+     * @param message string id for the message
+    */
     public void PopUp(int title, int message){
         new AlertDialog.Builder(this)
         .setTitle(title)
