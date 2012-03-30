@@ -12,9 +12,9 @@ public class SuperDefconActivity extends Activity {
 	//if true the first boot has not yet happened
 	public static final String FIRST_BOOT = "boot";
 	public static final String DEFCON = "currentState";
-	public static final String NOTIFICATION_PRESENT = "here";
 	
 	public int currentDefcon;
+	
 	String FILENAME = "log.txt";
 	File logFile = new File(FILENAME);
 	 
