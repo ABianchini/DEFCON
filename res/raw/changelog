@@ -15,3 +15,5 @@
 1.2.0 - Added a log of Defense Statuses accessible from the main activity
 
 1.2.3 - Changed icons, made landscape work, and got the Log Activity to start at the most recent entry
+
+1.2.4 - Minor bug fix with settings

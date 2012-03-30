@@ -32,8 +32,10 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
             checkBox.setChecked(true);
+            notifChecked = true;
         } else {
         	checkBox.setChecked(false);
+        	notifChecked = false;
         }
     }
     @Override
