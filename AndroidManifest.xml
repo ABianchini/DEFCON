@@ -9,7 +9,7 @@
     <application
         android:icon="@drawable/defcon_icon"
         android:label="@string/app_name">
-        <activity android:name="DefconSplashActivity">
+        <activity android:name="DefconSplashActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name="DefconSettingsActivity" android:icon="@android:drawable/ic_menu_preferences" android:label="@string/settings"></activity>
         <activity android:name="DefconChangelogActivity" android:icon="@android:drawable/ic_menu_recent_history" android:label="@string/changelog"></activity>
-        <activity android:name="SuperDefconActivity"></activity>
+        <activity android:name="SuperDefconActivity" android:label="@string/app_name"></activity>
         <activity android:name="DefconLogActivity" android:label="@string/log" android:icon="@android:drawable/ic_menu_sort_by_size"></activity>
     </application>
 
