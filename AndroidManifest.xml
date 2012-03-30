@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.advancementbureau.defcon"
-    android:versionCode="7"
-    android:versionName="1.1.1" >
+    android:versionCode="9"
+    android:versionName="1.2.3" >
 
-    <uses-sdk android:minSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="14" />
 
     <application
         android:icon="@drawable/defcon_icon"
@@ -23,7 +23,7 @@
         <activity android:name="DefconSettingsActivity" android:icon="@android:drawable/ic_menu_preferences" android:label="@string/settings"></activity>
         <activity android:name="DefconChangelogActivity" android:icon="@android:drawable/ic_menu_recent_history" android:label="@string/changelog"></activity>
         <activity android:name="SuperDefconActivity"></activity>
-        <activity android:name="DefconLogActivity" android:label="@string/log"></activity>
+        <activity android:name="DefconLogActivity" android:label="@string/log" android:icon="@android:drawable/ic_menu_sort_by_size"></activity>
     </application>
 
 </manifest>

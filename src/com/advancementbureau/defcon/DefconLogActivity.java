@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class DefconLogActivity extends Activity {
@@ -22,6 +23,14 @@ public class DefconLogActivity extends Activity {
         setContentView(R.layout.log);
         ActionBar actionBar2 = getActionBar();
         actionBar2.setDisplayHomeAsUpEnabled(true);
+        
+        //Sets the Scrollview at bottom of txt file
+        final ScrollView logScroller = (ScrollView) findViewById(R.id.ScrollViewLog);
+        logScroller.post(new Runnable() { 
+            public void run() { 
+                logScroller.fullScroll(ScrollView.FOCUS_DOWN); 
+            } 
+        }); 
         
         InputStream iFile;
 		try {

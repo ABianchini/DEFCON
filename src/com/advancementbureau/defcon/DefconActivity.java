@@ -68,10 +68,12 @@ public class DefconActivity extends SuperDefconActivity {
          */
         defOne.setOnClickListener(new View.OnClickListener() {
         	public void onClick(View view) {
+        		//Notify of Defense Status change
         		defconNotify(1);
         		currentDefcon = 1;
-        		//toastIt(currentDefcon);
+        		//sets color scheme of Defense Status buttons to reflect current Defense Status
         		colors(currentDefcon);
+        		//records Defense Status selection to a log
         		try {
 					keepLog(1);
 				} catch (IOException e) {
@@ -328,20 +330,23 @@ public class DefconActivity extends SuperDefconActivity {
     		}
     	}
     }
-    
+    /*
+     * Appends the selected Defense Status to a text file
+     * @param i current Defense Status
+     */
     public void keepLog(int i) throws IOException {
     	String insertString = null;
 		FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_APPEND|MODE_PRIVATE);
     	if (i ==1) {
-    		insertString = "Defcon 1 " + date + "\n";
+    		insertString = "Defcon 1 - " + date + "\n";
     	}if (i ==2) {
-    		insertString = "Defcon 2 " + date + "\n";
+    		insertString = "Defcon 2 - " + date + "\n";
     	}if (i ==3) {
-    		insertString = "Defcon 3 " + date + "\n";
+    		insertString = "Defcon 3 - " + date + "\n";
     	}if (i ==4) {
-    		insertString = "Defcon 4 " + date + "\n";
+    		insertString = "Defcon 4 - " + date + "\n";
     	}if (i ==5) {
-    		insertString = "Defcon 5 " + date + "\n";
+    		insertString = "Defcon 5 - " + date + "\n";
     	}
     	fos.write(insertString.getBytes());
     	fos.close();

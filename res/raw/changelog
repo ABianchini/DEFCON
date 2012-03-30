@@ -11,3 +11,7 @@
 1.1.0 - Notifications for Defense Statuses are complete.
 
 1.1.1 - Fixed bug with settings displaying current settings
+
+1.2.0 - Added a log of Defense Statuses accessible from the main activity
+
+1.2.3 - Changed icons, made landscape work, and got the Log Activity to start at the most recent entry

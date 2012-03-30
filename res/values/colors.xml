@@ -12,5 +12,6 @@
     <color name="one_color_fade">#7f7f7f</color>
     <color name="grey">#cacaca</color>
     <color name="black">#000000</color>
+    <color name="darker_grey">#505050</color>
     
 </resources>

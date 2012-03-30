@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingBottom="5dp" >
 
         <CheckBox
             android:id="@+id/CheckBox_Notification"
@@ -16,22 +17,65 @@
             android:checked="true"
             android:layout_gravity="center_vertical"
             android:onClick="onCheckBoxNotificationsClicked" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/setting_notif"
-                android:textStyle="bold"
-                android:textSize="@dimen/title_text" />
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:textSize="@dimen/text"
-                android:text="@string/setting_notif_desc" />
-            
-        </LinearLayout>
-    </LinearLayout>
+        	<LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	            <TextView
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:text="@string/setting_notif"
+	                android:textStyle="bold"
+	                android:textSize="@dimen/title_text" />
+	            <TextView
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:textSize="@dimen/text"
+	                android:text="@string/setting_notif_desc" />
+        	</LinearLayout>
+	</LinearLayout>
+        
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@color/grey" />
+        
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:paddingBottom="6dp"
+	    android:paddingTop="6dp" >
+	
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@android:drawable/ic_menu_save"
+	        android:layout_gravity="center_vertical"
+	        android:paddingRight="4dp"
+	        android:paddingLeft="4dp"
+	        android:paddingTop="8dp" />
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	        <TextView
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:text="@string/save"
+	            android:textColor="@color/darker_grey"
+	            android:textStyle="bold"
+	            android:textSize="@dimen/title_text" />
+	        <TextView
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:textSize="@dimen/text"
+	            android:text="@string/coming_soon"
+	            android:textColor="@color/darker_grey" />
+	    </LinearLayout>
+	</LinearLayout>
+	<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@color/grey" />
 </LinearLayout>

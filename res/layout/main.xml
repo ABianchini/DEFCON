@@ -4,126 +4,137 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     
-    <LinearLayout
-        android:id="@+id/LinearLayout_DefconOne"
+    <ScrollView 
+	    android:id="@+id/ScrollViewMain"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/big_button"
-        android:background="@color/one_color_fade"
-        android:orientation="horizontal"
-        android:clickable="true">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/big_text"
-            android:textColor="@color/black"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="37dp"
-            android:text="@string/defcon_one"
-            android:textColor="@color/black"
-            android:textSize="@dimen/number" />
-        
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearLayout_DefconTwo"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/big_button"
-        android:background="@color/two_color_fade"
-        android:orientation="horizontal"
-        android:clickable="true">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/big_text"
-            android:textColor="@color/black"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="37dp"
-            android:text="@string/defcon_two"
-            android:textColor="@color/black"
-            android:textSize="@dimen/number" />
-        
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearLayout_DefconThree"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/big_button"
-        android:background="@color/three_color_fade"
-        android:orientation="horizontal"
-        android:clickable="true">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/big_text"
-            android:textColor="@color/black"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="37dp"
-            android:text="@string/defcon_three"
-            android:textColor="@color/black"
-            android:textSize="@dimen/number" />
-        
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearLayout_DefconFour"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/big_button"
-        android:background="@color/four_color_fade"
-        android:orientation="horizontal"
-        android:clickable="true">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/big_text"
-            android:textColor="@color/black"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="37dp"
-            android:text="@string/defcon_four"
-            android:textColor="@color/black"
-            android:textSize="@dimen/number" />
-        
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/LinearLayout_DefconFive"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/big_button"
-        android:background="@color/five_color_fade"
-        android:orientation="horizontal"
-        android:clickable="true">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/big_text"
-            android:textColor="@color/black"
-            android:paddingLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="37dp"
-            android:text="@string/defcon_five"
-            android:textColor="@color/black"
-            android:textSize="@dimen/number" />
-        
-    </LinearLayout>
-
-
+        android:scrollbars="vertical"
+        android:isScrollContainer="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+        <LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:orientation="vertical" >
+		    <LinearLayout
+		        android:id="@+id/LinearLayout_DefconOne"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/big_button"
+		        android:background="@color/one_color_fade"
+		        android:orientation="horizontal"
+		        android:clickable="true">
+		        <TextView
+		            android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/app_name"
+		            android:textSize="@dimen/big_text"
+		            android:textColor="@color/black"
+		            android:paddingLeft="5dp" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="37dp"
+		            android:text="@string/defcon_one"
+		            android:textColor="@color/black"
+		            android:textSize="@dimen/number" />
+		        
+		    </LinearLayout>
+		    <LinearLayout
+		        android:id="@+id/LinearLayout_DefconTwo"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/big_button"
+		        android:background="@color/two_color_fade"
+		        android:orientation="horizontal"
+		        android:clickable="true">
+		        <TextView
+		            android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/app_name"
+		            android:textSize="@dimen/big_text"
+		            android:textColor="@color/black"
+		            android:paddingLeft="5dp" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="37dp"
+		            android:text="@string/defcon_two"
+		            android:textColor="@color/black"
+		            android:textSize="@dimen/number" />
+		        
+		    </LinearLayout>
+		    <LinearLayout
+		        android:id="@+id/LinearLayout_DefconThree"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/big_button"
+		        android:background="@color/three_color_fade"
+		        android:orientation="horizontal"
+		        android:clickable="true">
+		        <TextView
+		            android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/app_name"
+		            android:textSize="@dimen/big_text"
+		            android:textColor="@color/black"
+		            android:paddingLeft="5dp" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="37dp"
+		            android:text="@string/defcon_three"
+		            android:textColor="@color/black"
+		            android:textSize="@dimen/number" />
+		        
+		    </LinearLayout>
+		    <LinearLayout
+		        android:id="@+id/LinearLayout_DefconFour"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/big_button"
+		        android:background="@color/four_color_fade"
+		        android:orientation="horizontal"
+		        android:clickable="true">
+		        <TextView
+		            android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/app_name"
+		            android:textSize="@dimen/big_text"
+		            android:textColor="@color/black"
+		            android:paddingLeft="5dp" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="37dp"
+		            android:text="@string/defcon_four"
+		            android:textColor="@color/black"
+		            android:textSize="@dimen/number" />
+		        
+		    </LinearLayout>
+		    <LinearLayout
+		        android:id="@+id/LinearLayout_DefconFive"
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/big_button"
+		        android:background="@color/five_color_fade"
+		        android:orientation="horizontal"
+		        android:clickable="true">
+		        <TextView
+		            android:layout_height="wrap_content"
+		            android:layout_width="wrap_content"
+		            android:layout_gravity="center_vertical"
+		            android:text="@string/app_name"
+		            android:textSize="@dimen/big_text"
+		            android:textColor="@color/black"
+		            android:paddingLeft="5dp" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="37dp"
+		            android:text="@string/defcon_five"
+		            android:textColor="@color/black"
+		            android:textSize="@dimen/number" />
+		        
+		    </LinearLayout>
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>

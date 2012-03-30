@@ -28,6 +28,9 @@
 	<string name="reselect">Reselect</string>
 	<string name="reselect_info">You must reselect the Defense Status in order for the changes to apply.</string>
 	<string name="log">DEFCON Log</string>
+	<string name="save">Save Log to SD</string>
+	<string name="coming_soon">Coming soon...</string>
+	<string name="save_info">Saves the log text file to /DEFCON on your SD Card</string>
 	
     
 </resources>
