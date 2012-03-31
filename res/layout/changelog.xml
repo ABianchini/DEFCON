@@ -15,7 +15,7 @@
 	        android:id="@+id/TextView_ChangelogText"
 	        android:textColor="@color/grey"
 	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_height="wrap_content"
 	        android:autoLink="all"
 	        android:isScrollContainer="true"
 	        android:drawablePadding="2dp"
