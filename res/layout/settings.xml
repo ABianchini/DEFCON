@@ -45,7 +45,9 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="horizontal"
 	    android:paddingBottom="6dp"
-	    android:paddingTop="6dp" >
+	    android:paddingTop="6dp"
+	    android:clickable="true"
+	    android:onClick="onSavetoSDClick" >
 	
 	    <ImageView
 	        android:layout_width="wrap_content"
@@ -63,15 +65,15 @@
 	            android:layout_height="wrap_content"
 	            android:layout_width="wrap_content"
 	            android:text="@string/save"
-	            android:textColor="@color/darker_grey"
 	            android:textStyle="bold"
+	            android:textColor="@color/darker_grey"
 	            android:textSize="@dimen/title_text" />
 	        <TextView
 	            android:layout_height="wrap_content"
 	            android:layout_width="wrap_content"
 	            android:textSize="@dimen/text"
-	            android:text="@string/coming_soon"
-	            android:textColor="@color/darker_grey" />
+	            android:textColor="@color/darker_grey"
+	            android:text="@string/save_info" />
 	    </LinearLayout>
 	</LinearLayout>
 	<ImageView

@@ -75,7 +75,10 @@ public class DefconSettingsActivity extends SuperDefconActivity {
             public void onClick(DialogInterface arg0, int arg1) {}
         }).show();
     }
-    
+        
+    public void onSavetoSDClick(View view) {
+    	
+    }
     
     //for the "up" button
     @Override
