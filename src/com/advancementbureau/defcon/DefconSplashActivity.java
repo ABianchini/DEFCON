@@ -8,6 +8,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.advancementbureau.defconwork.R;
 
 public class DefconSplashActivity extends SuperDefconActivity {
 	

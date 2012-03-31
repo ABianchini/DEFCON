@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.advancementbureau.defcon"
+    package="com.advancementbureau.defconwork"
     android:versionCode="10"
     android:versionName="1.2.4" >
 
-    <uses-sdk android:minSdkVersion="14" />
+    <uses-sdk android:minSdkVersion="15" />
 
     <application
         android:icon="@drawable/defcon_icon"
         android:label="@string/app_name">
-        <activity android:name="DefconSplashActivity" android:label="@string/app_name">
+        <activity android:name="com.advancementbureau.defcon.DefconSplashActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DefconActivity"
+            android:name="com.advancementbureau.defcon.DefconActivity"
             android:label="@string/app_name">
         </activity>
-        <activity android:name="DefconSettingsActivity" android:icon="@android:drawable/ic_menu_preferences" android:label="@string/settings"></activity>
-        <activity android:name="DefconChangelogActivity" android:icon="@android:drawable/ic_menu_recent_history" android:label="@string/changelog"></activity>
-        <activity android:name="SuperDefconActivity" android:label="@string/app_name"></activity>
-        <activity android:name="DefconLogActivity" android:label="@string/log" android:icon="@android:drawable/ic_menu_sort_by_size"></activity>
+        <activity android:name="com.advancementbureau.defcon.DefconSettingsActivity" android:icon="@android:drawable/ic_menu_preferences" android:label="@string/settings"></activity>
+        <activity android:name="com.advancementbureau.defcon.DefconChangelogActivity" android:icon="@android:drawable/ic_menu_recent_history" android:label="@string/changelog"></activity>
+        <activity android:name="com.advancementbureau.defcon.SuperDefconActivity" android:label="@string/app_name"></activity>
+        <activity android:name="com.advancementbureau.defcon.DefconLogActivity" android:label="@string/log" android:icon="@android:drawable/ic_menu_sort_by_size"></activity>
     </application>
 
 </manifest>

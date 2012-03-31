@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.advancementbureau.defconwork.R;
 
 public class DefconActivity extends SuperDefconActivity {
 	

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import com.advancementbureau.defconwork.R;
 
 public class DefconSettingsActivity extends SuperDefconActivity {
 	SharedPreferences mGameSettings;
