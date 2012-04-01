@@ -3,17 +3,17 @@
     <item
         android:id="@+id/settings_menu_item"
         android:title="@string/settings"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/settings"
         android:showAsAction="always|withText" ></item>
     <item
         android:id="@+id/log_menu_item"
         android:title="@string/log"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/list"
         android:showAsAction="always|withText" ></item>
     <item
         android:id="@+id/changelog_menu_item"
         android:title="@string/changelog"
-        android:icon="@android:drawable/ic_menu_recent_history"
+        android:icon="@drawable/time"
         android:showAsAction="never" ></item>
     <item
         android:id="@+id/about_menu_item"
