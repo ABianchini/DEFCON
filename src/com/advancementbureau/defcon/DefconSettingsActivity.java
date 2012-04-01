@@ -76,7 +76,8 @@ public class DefconSettingsActivity extends SuperDefconActivity {
             public void onClick(DialogInterface arg0, int arg1) {}
         }).show();
     }
-        
+    
+    //TODO push log.txt to a folder on the SD Card
     public void onSavetoSDClick(View view) {
     	
     }
