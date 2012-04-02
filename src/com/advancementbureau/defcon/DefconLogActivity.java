@@ -22,8 +22,8 @@ public class DefconLogActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log);
-        //ActionBar actionBar2 = getActionBar();
-        //actionBar2.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar2 = getActionBar();
+        actionBar2.setDisplayHomeAsUpEnabled(true);
         
         //Sets the Scrollview at bottom of txt file
         final ScrollView logScroller = (ScrollView) findViewById(R.id.ScrollViewLog);

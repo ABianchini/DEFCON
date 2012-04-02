@@ -18,8 +18,8 @@ public class DefconChangelogActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changelog);
-        //ActionBar actionBar2 = getActionBar();
-        //actionBar2.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar2 = getActionBar();
+        actionBar2.setDisplayHomeAsUpEnabled(true);
         
         InputStream iFile = getResources().openRawResource(R.raw.changelog);
         try {
