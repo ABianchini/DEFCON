@@ -8,6 +8,7 @@ import java.io.InputStream;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ScrollView;
@@ -22,8 +23,10 @@ public class DefconLogActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log);
-        ActionBar actionBar2 = getActionBar();
-        actionBar2.setDisplayHomeAsUpEnabled(true);
+        if (Build.VERSION.SDK_INT >= 11) {
+	        ActionBar actionBar2 = getActionBar();
+	        actionBar2.setDisplayHomeAsUpEnabled(true);
+        }
         
         //Sets the Scrollview at bottom of txt file
         final ScrollView logScroller = (ScrollView) findViewById(R.id.ScrollViewLog);
