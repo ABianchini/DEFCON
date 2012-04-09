@@ -30,7 +30,7 @@
 	<string name="log">DEFCON Log</string>
 	<string name="save">Save Log to SD</string>
 	<string name="coming_soon">Coming soon(…, &#8230;) ?</string>
-	<string name="save_info">Saves the log text file to /DEFCON on your SD Card</string>
+	<string name="save_info">Saves the log text file to root of your SD Card. Warning: overwrites old log.</string>
 	
     
 </resources>

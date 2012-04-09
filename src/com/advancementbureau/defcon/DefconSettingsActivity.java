@@ -1,5 +1,13 @@
 package com.advancementbureau.defcon;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,11 +21,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
+
 import com.advancementbureau.defconwork.R;
 
 public class DefconSettingsActivity extends SuperDefconActivity {
 	SharedPreferences mGameSettings;
 	public boolean notifChecked;
+	String FILENAME = "log.txt";
+	String strFile = null;
 	
 	
     /** Called when the activity is first created. */
@@ -82,7 +94,30 @@ public class DefconSettingsActivity extends SuperDefconActivity {
     
     //TODO push log.txt to a folder on the SD Card
     public void onSavetoSDClick(View view) {
-    	
+    	// write on SD card file data in the text box
+    	InputStream iFile;
+		
+		try {
+			try {
+				iFile = openFileInput(FILENAME);
+				strFile = inputStreamToString(iFile);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			File myFile = new File("/sdcard/DEFCON_Log.txt");
+			myFile.createNewFile();
+			FileOutputStream fOut = new FileOutputStream(myFile);
+			OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+			myOutWriter.append(strFile);
+			myOutWriter.close();
+			fOut.close();
+			Toast.makeText(getBaseContext(),
+					"Done writing SD 'DEFCON_Log.txt'",
+					Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+		}
     }
     
     //for the "up" button
@@ -94,5 +129,16 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent2); }
     	return true;
+    }
+    public String inputStreamToString(InputStream is) throws IOException {
+    	StringBuffer sBuffer = new StringBuffer();
+    	DataInputStream dataIO = new DataInputStream(is);
+    	String strLine = null;
+    	while ((strLine = dataIO.readLine()) != null) {
+    		sBuffer.append(strLine + "\n");
+    	}
+    	dataIO.close();
+    	is.close();
+    	return sBuffer.toString();
     }
 }
