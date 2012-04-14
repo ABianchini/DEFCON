@@ -3,7 +3,6 @@ package com.advancementbureau.defcon;
 import java.io.File;
 
 import android.app.Activity;
-import com.advancementbureau.defconwork.R;
 
 public class SuperDefconActivity extends Activity {
 	

@@ -29,7 +29,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 	SharedPreferences mGameSettings;
 	public boolean notifChecked;
 	String FILENAME = "log.txt";
-	String strFile = null;
+	String strFile = "You never set a defense posture.";
 	
 	
     /** Called when the activity is first created. */
@@ -92,7 +92,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         }).show();
     }
     
-    //TODO push log.txt to a folder on the SD Card
+    //pushes log.txt to the root of the SD Card
     public void onSavetoSDClick(View view) {
     	// write on SD card file data in the text box
     	InputStream iFile;
@@ -113,9 +113,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 			myOutWriter.append(strFile);
 			myOutWriter.close();
 			fOut.close();
-			Toast.makeText(getBaseContext(),
-					"Done writing SD 'DEFCON_Log.txt'",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getBaseContext(), "Done writing SD 'DEFCON_Log.txt'", Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 		}
     }

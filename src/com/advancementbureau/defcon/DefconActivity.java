@@ -272,7 +272,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Context context3 = getApplicationContext();
 		Intent notificationIntent3 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent3 = PendingIntent.getActivity(this, 0, notificationIntent3, 0);
-		notificationDefThree.setLatestEventInfo(context2, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
+		notificationDefThree.setLatestEventInfo(context3, "Defcon 3", "REMAIN VIGILANT.", contentIntent3);
 		notificationDefThree.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_THREE = 3;
 		
@@ -280,7 +280,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Context context4 = getApplicationContext();
 		Intent notificationIntent4 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent4 = PendingIntent.getActivity(this, 0, notificationIntent4, 0);
-		notificationDefFour.setLatestEventInfo(context2, "Defcon 4", "REMAIN ALERT.", contentIntent4);
+		notificationDefFour.setLatestEventInfo(context4, "Defcon 4", "REMAIN ALERT.", contentIntent4);
 		notificationDefFour.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_FOUR = 4;
 		
@@ -288,7 +288,7 @@ public class DefconActivity extends SuperDefconActivity {
 		Context context5 = getApplicationContext();
 		Intent notificationIntent5 = new Intent(this, DefconActivity.class);
 		PendingIntent contentIntent5 = PendingIntent.getActivity(this, 0, notificationIntent5, 0);
-		notificationDefFive.setLatestEventInfo(context2, "Defcon 5", "Remain ALERT.", contentIntent5);
+		notificationDefFive.setLatestEventInfo(context5, "Defcon 5", "Remain ALERT.", contentIntent5);
 		notificationDefFive.flags = Notification.FLAG_ONGOING_EVENT;
 		final int DEF_FIVE = 5;
 	
