@@ -6,12 +6,32 @@
             android:title="@string/extras" >
 
         <CheckBoxPreference
+            android:id="@+id/NotifCheck"
 	        android:key="notif_check"
 	        android:title="@string/setting_notif"
 	        android:summary="@string/setting_notif_desc"
-	        android:defaultValue="true" />
+	        android:defaultValue="true"
+	        android:onClick="onNoficiationCheckClick" />
         
-        <DialogPreference />
-
+        <DialogPreference
+            android:id="@+id/SaveToSD_Dialog"
+            android:title="@string/save_sd"
+            android:positiveButtonText="@string/save"
+            android:negativeButtonText="@string/nevermind">
+            <TextView
+                android:text="@string/save_loc"
+                android:textSize="14dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="5dp" />
+            <EditTextPreference
+                android:id="@+id/SaveLocation_Edit"
+                android:key="save_location"
+                android:text="/sdcard/DEFCON_Log.txt"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="5dp" />
+        </DialogPreference>
+        
     </PreferenceCategory>
 </PreferenceScreen>
