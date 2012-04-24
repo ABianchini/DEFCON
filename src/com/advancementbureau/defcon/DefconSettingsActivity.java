@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,7 +25,7 @@ import android.widget.Toast;
 import com.advancementbureau.defconwork.R;
 
 public class DefconSettingsActivity extends SuperDefconActivity {
-	SharedPreferences mGameSettings;
+	
 	public boolean notifChecked;
 	String FILENAME = "log.txt";
 	String strFile = "You never set a defense posture.";
@@ -75,7 +74,8 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         } else {
         	notifChecked = false;
         }
-        PopUp(R.string.reselect, R.string.reselect_info);
+        defconNotify(currentDefcon);
+        //PopUp(R.string.reselect, R.string.reselect_info);
     }
     
     /*
