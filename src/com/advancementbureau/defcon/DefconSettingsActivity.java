@@ -1,25 +1,31 @@
 package com.advancementbureau.defcon;
 
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.advancementbureau.defconwork.R;
 
-public class DefconSettingsActivity extends PreferenceActivity {
-	SharedPreferences mGameSettings;
+public class DefconSettingsActivity extends SuperDefconActivity {
+	
 	public boolean notifChecked;
 	String FILENAME = "log.txt";
 	String strFile = "You never set a defense posture.";
@@ -31,13 +37,13 @@ public class DefconSettingsActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         //Shared preferences defining
-       // mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+        mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         if (Build.VERSION.SDK_INT >= 11) {
 	        ActionBar actionBar2 = getActionBar();
 	        actionBar2.setDisplayHomeAsUpEnabled(true);
         }
         
-        /*//checks or unchecks the checkbox depending on the status of PREFERENCES_NOTIFICATION
+        //checks or unchecks the checkbox depending on the status of PREFERENCES_NOTIFICATION
         final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
             checkBox.setChecked(true);
@@ -45,24 +51,31 @@ public class DefconSettingsActivity extends PreferenceActivity {
         } else {
         	checkBox.setChecked(false);
         	notifChecked = false;
-        }*/
+        }
     }
     @Override
 	protected void onPause() {
 		super.onPause();
 		
-		/*//commits notifChecked to PREFERENCES_NOTIFICATION
+		//commits notifChecked to PREFERENCES_NOTIFICATION
 		Editor editor = mGameSettings.edit();
 		editor.putBoolean(PREFERENCES_NOTIFICATION, notifChecked);
 
-		editor.commit();*/
+		editor.commit();
 	}
     
     /*
      * Converts the state of the checkbox to the notifChecked variable
      */
-    public void onNoficiationCheckClick(View v) {
-        PopUp(R.string.reselect, R.string.reselect_info);
+    public void onCheckBoxNotificationsClicked(View v) {
+    	final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
+        if (checkBox.isChecked()) {
+            notifChecked = true;
+        } else {
+        	notifChecked = false;
+        }
+        defconNotify(currentDefcon);
+        //PopUp(R.string.reselect, R.string.reselect_info);
     }
     
     /*
@@ -79,7 +92,7 @@ public class DefconSettingsActivity extends PreferenceActivity {
         }).show();
     }
     
-    /*//pushes log.txt to the root of the SD Card
+    //pushes log.txt to the root of the SD Card
     public void onSavetoSDClick(View view) {
     	// write on SD card file data in the text box
     	InputStream iFile;
@@ -103,7 +116,7 @@ public class DefconSettingsActivity extends PreferenceActivity {
 			Toast.makeText(getBaseContext(), "Done writing SD 'DEFCON_Log.txt'", Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 		}
-    }*/
+    }
     
     //for the "up" button
     @Override
