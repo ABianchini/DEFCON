@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
@@ -29,6 +30,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 	public boolean notifChecked;
 	String FILENAME = "log.txt";
 	String strFile = "You never set a defense posture.";
+	Editable saveLoc;
 	
 	
     /** Called when the activity is first created. */
@@ -56,26 +58,29 @@ public class DefconSettingsActivity extends SuperDefconActivity {
     @Override
 	protected void onPause() {
 		super.onPause();
-		
 		//commits notifChecked to PREFERENCES_NOTIFICATION
-		Editor editor = mGameSettings.edit();
-		editor.putBoolean(PREFERENCES_NOTIFICATION, notifChecked);
-
-		editor.commit();
+		
 	}
     
     /*
      * Converts the state of the checkbox to the notifChecked variable
      */
     public void onCheckBoxNotificationsClicked(View v) {
+    	if (mGameSettings.contains(DEFCON)) {
+			currentDefcon = mGameSettings.getInt(DEFCON, 0);
+		}
+    	
     	final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (checkBox.isChecked()) {
             notifChecked = true;
         } else {
         	notifChecked = false;
         }
+        Editor editor = mGameSettings.edit();
+		editor.putBoolean(PREFERENCES_NOTIFICATION, notifChecked);
+		editor.commit();
+		
         defconNotify(currentDefcon);
-        //PopUp(R.string.reselect, R.string.reselect_info);
     }
     
     /*
@@ -94,9 +99,8 @@ public class DefconSettingsActivity extends SuperDefconActivity {
     
     //pushes log.txt to the root of the SD Card
     public void onSavetoSDClick(View view) {
-    	// write on SD card file data in the text box
     	InputStream iFile;
-		
+    	
 		try {
 			try {
 				iFile = openFileInput(FILENAME);
@@ -113,7 +117,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 			myOutWriter.append(strFile);
 			myOutWriter.close();
 			fOut.close();
-			Toast.makeText(getBaseContext(), "Done writing SD 'DEFCON_Log.txt'", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getBaseContext(), "'DEFCON_Log.txt' has been written to SD", Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 		}
     }

@@ -34,7 +34,7 @@
 	<string name="extras">Extras</string>
 	<string name="save">Save</string>
 	<string name="nevermind">Nevermind</string>
-	<string name="save_loc">Enter a location to save your DEFCON log.</string>
+	<string name="save_loc">Enter a location to save your DEFCON log:</string>
 	
     
 </resources>

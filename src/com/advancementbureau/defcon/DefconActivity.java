@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -17,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.advancementbureau.defconwork.R;
 
@@ -230,15 +234,15 @@ public class DefconActivity extends SuperDefconActivity {
     /*
      * Makes Toast Notification for current Defcon if Task Bar Notifications are off
      * @param i for current Defcon
-     *//*
+     */
     public void toastIt(int i) {
     	Toast.makeText(this, "Defcon "+i, 1000).show();
-    }*/
+    }
     
     /*
      * Notifications for current Defcon (Toast and task bar)
      * @param i current Defcon
-     *//*
+     */
     public void defconNotify(int i) {
     	//defines varaibles
     	String ns = Context.NOTIFICATION_SERVICE;
@@ -326,7 +330,7 @@ public class DefconActivity extends SuperDefconActivity {
     			toastIt(5);
     		}
     	}
-    }*/
+    }
     /*
      * Appends the selected Defense Status to a text file
      * @param i current Defense Status
