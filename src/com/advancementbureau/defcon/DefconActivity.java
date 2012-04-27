@@ -56,6 +56,8 @@ public class DefconActivity extends SuperDefconActivity {
 			currentDefcon = mGameSettings.getInt(DEFCON, 0);
 		}
         
+        defconNotify(currentDefcon);
+        
         //Displays on first boot Dialog Box. 
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
