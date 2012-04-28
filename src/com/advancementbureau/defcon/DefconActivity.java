@@ -28,7 +28,6 @@ public class DefconActivity extends SuperDefconActivity {
 	
 	SharedPreferences mGameSettings;
 	public boolean firstBootDone;
-	public int infoDefcon;
 	Date date = Calendar.getInstance().getTime();
 	
     /** Called when the activity is first created. */
@@ -56,7 +55,15 @@ public class DefconActivity extends SuperDefconActivity {
 			currentDefcon = mGameSettings.getInt(DEFCON, 0);
 		}
         
+        if (mGameSettings.contains(LAST_CONDITION)) {
+			lastDefcon = mGameSettings.getInt(LAST_CONDITION, 0);
+		}
+        
         defconNotify(currentDefcon);
+        try {
+			keepLog(currentDefcon);
+		} catch (IOException e1) {
+		}
         
         //Displays on first boot Dialog Box. 
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
@@ -83,6 +90,7 @@ public class DefconActivity extends SuperDefconActivity {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+        		lastDefcon = currentDefcon;
         	}
         });
         defOne.setOnLongClickListener(new View.OnLongClickListener() {
@@ -102,6 +110,7 @@ public class DefconActivity extends SuperDefconActivity {
 					e.printStackTrace();
 				}
         		colors(currentDefcon);
+        		lastDefcon = currentDefcon;
         	}
         });
         defTwo.setOnLongClickListener(new View.OnLongClickListener() {
@@ -121,6 +130,7 @@ public class DefconActivity extends SuperDefconActivity {
 					e.printStackTrace();
 				}
         		colors(currentDefcon);
+        		lastDefcon = currentDefcon;
         	}
         });
         defThree.setOnLongClickListener(new View.OnLongClickListener() {
@@ -140,6 +150,7 @@ public class DefconActivity extends SuperDefconActivity {
 					e.printStackTrace();
 				}
         		colors(currentDefcon);
+        		lastDefcon = currentDefcon;
         	}
         });
         defFour.setOnLongClickListener(new View.OnLongClickListener() {
@@ -159,6 +170,7 @@ public class DefconActivity extends SuperDefconActivity {
 					e.printStackTrace();
 				}
         		colors(currentDefcon);
+        		lastDefcon = currentDefcon;
         	}
         });
         defFive.setOnLongClickListener(new View.OnLongClickListener() {
@@ -177,6 +189,7 @@ public class DefconActivity extends SuperDefconActivity {
     	super.onPause();
     	Editor editor = mGameSettings.edit();
     	editor.putInt(DEFCON, currentDefcon);
+    	editor.putInt(LAST_CONDITION, lastDefcon);
     	editor.commit();
     	
     }
@@ -338,21 +351,23 @@ public class DefconActivity extends SuperDefconActivity {
      * @param i current Defense Status
      */
     public void keepLog(int i) throws IOException {
-    	String insertString = null;
-		FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_APPEND|MODE_PRIVATE);
-    	if (i ==1) {
-    		insertString = "Defcon 1 - " + date + "\n";
-    	}if (i ==2) {
-    		insertString = "Defcon 2 - " + date + "\n";
-    	}if (i ==3) {
-    		insertString = "Defcon 3 - " + date + "\n";
-    	}if (i ==4) {
-    		insertString = "Defcon 4 - " + date + "\n";
-    	}if (i ==5) {
-    		insertString = "Defcon 5 - " + date + "\n";
+    	if (i != lastDefcon) {
+    		String insertString = null;
+			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_APPEND|MODE_PRIVATE);
+	    	if (i ==1) {
+	    		insertString = "Defcon 1 - " + date + "\n";
+	    	}if (i ==2) {
+	    		insertString = "Defcon 2 - " + date + "\n";
+	    	}if (i ==3) {
+	    		insertString = "Defcon 3 - " + date + "\n";
+	    	}if (i ==4) {
+	    		insertString = "Defcon 4 - " + date + "\n";
+	    	}if (i ==5) {
+	    		insertString = "Defcon 5 - " + date + "\n";
+	    	}
+	    	fos.write(insertString.getBytes());
+	    	fos.close();
     	}
-    	fos.write(insertString.getBytes());
-    	fos.close();
     }
     
     /*

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.advancementbureau.defconwork.R;
@@ -24,6 +25,13 @@ public class DefconChangelogActivity extends Activity {
 	        ActionBar actionBar2 = getActionBar();
 	        actionBar2.setDisplayHomeAsUpEnabled(true);
         }
+        
+        final ScrollView logScroller = (ScrollView) findViewById(R.id.ScrollViewSettings);
+        logScroller.post(new Runnable() { 
+            public void run() { 
+                logScroller.fullScroll(ScrollView.FOCUS_DOWN); 
+            } 
+        }); 
         
         InputStream iFile = getResources().openRawResource(R.raw.changelog);
         try {
