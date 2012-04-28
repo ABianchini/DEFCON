@@ -26,7 +26,6 @@ import com.advancementbureau.defconwork.R;
 
 public class DefconActivity extends SuperDefconActivity {
 	
-	SharedPreferences mGameSettings;
 	public boolean firstBootDone;
 	Date date = Calendar.getInstance().getTime();
 	
@@ -49,21 +48,6 @@ public class DefconActivity extends SuperDefconActivity {
         final LinearLayout defThree = (LinearLayout) findViewById(R.id.LinearLayout_DefconThree);
         final LinearLayout defFour = (LinearLayout) findViewById(R.id.LinearLayout_DefconFour);
         final LinearLayout defFive = (LinearLayout) findViewById(R.id.LinearLayout_DefconFive);
-        
-        //sets currentDefcon to the DEFCON preference and DEFCON to 0 if no defcon exists
-        if (mGameSettings.contains(DEFCON)) {
-			currentDefcon = mGameSettings.getInt(DEFCON, 0);
-		}
-        
-        if (mGameSettings.contains(LAST_CONDITION)) {
-			lastDefcon = mGameSettings.getInt(LAST_CONDITION, 0);
-		}
-        
-        defconNotify(currentDefcon);
-        try {
-			keepLog(currentDefcon);
-		} catch (IOException e1) {
-		}
         
         //Displays on first boot Dialog Box. 
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
@@ -189,10 +173,28 @@ public class DefconActivity extends SuperDefconActivity {
     	super.onPause();
     	Editor editor = mGameSettings.edit();
     	editor.putInt(DEFCON, currentDefcon);
-    	editor.putInt(LAST_CONDITION, lastDefcon);
+    	editor.putInt(LAST_CONDITION, currentDefcon);
     	editor.commit();
     	
     }
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		//sets currentDefcon to the DEFCON preference and DEFCON to 0 if no defcon exists
+        if (mGameSettings.contains(DEFCON)) {
+			currentDefcon = mGameSettings.getInt(DEFCON, 0);
+		}
+        
+        if (mGameSettings.contains(LAST_CONDITION)) {
+			lastDefcon = mGameSettings.getInt(LAST_CONDITION, 0);
+		}
+		defconNotify(currentDefcon);
+        try {
+			keepLog(currentDefcon);
+		} catch (IOException e1) {
+		}
+	}
     
 	/*
 	 * inflates the Action Bar's option menu
