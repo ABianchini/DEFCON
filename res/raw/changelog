@@ -29,3 +29,5 @@
 1.3.1 - Bug and Permission Fixes
 
 1.3.3 - No longer needs reselection of the Defense Condition after disabling notifications
+
+1.3.4 - Reselection on boot no longer needed
