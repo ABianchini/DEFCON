@@ -6,16 +6,9 @@
     android:id="@+id/root" >
     <TextView
 	    android:text="@string/save_loc"
-	    android:textSize="14dp"
+	    android:textSize="18dp"
 	    android:layout_height="wrap_content"
 	    android:layout_width="match_parent"
-	    android:padding="5dp" />
-	<EditText
-	    android:id="@+id/SaveLocation_Edit"
-	    android:text="/sdcard/DEFCON_Log.txt"
-	    android:layout_height="wrap_content"
-	    android:layout_width="match_parent"
-	    android:padding="5dp"
-	    android:inputType="textUri" />
+	    android:padding="10dp" />
 
 </LinearLayout>

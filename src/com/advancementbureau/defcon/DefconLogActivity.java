@@ -111,10 +111,9 @@ public class DefconLogActivity extends SuperDefconActivity {
 			case SAVE_LOCATION_ID:
 				LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				final View layout = inflater.inflate(R.layout.save_dialog, (ViewGroup) findViewById(R.id.root));
-				final EditText location = (EditText) layout.findViewById(R.id.SaveLocation_Edit);
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setView(layout);
-				builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+				builder.setNegativeButton(R.string.nevermind, new DialogInterface.OnClickListener() {
 					@SuppressWarnings("deprecation")
 					public void onClick(DialogInterface dialog,
 							int whichButton) {
@@ -124,9 +123,8 @@ public class DefconLogActivity extends SuperDefconActivity {
 						DefconLogActivity.this.removeDialog(SAVE_LOCATION_ID);
 					}
 				});
-				builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(R.string.doit, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						String saveLocationString = location.getText().toString();
 						InputStream iFile;
 				    	
 						try {

@@ -28,13 +28,14 @@
 	<string name="reselect">Reselect</string>
 	<string name="reselect_info">You must reselect the Defense Condition in order for the changes to apply.</string>
 	<string name="log">DEFCON Log</string>
-	<string name="save_sd">Save Log to SD</string>
+	<string name="save_sd">Save Log</string>
 	<string name="coming_soon">Coming soon(…, &#8230;) ?</string>
 	<string name="save_info">Saves the log text file to root of your SD Card. Warning: overwrites old log.</string>
 	<string name="extras">Extras</string>
 	<string name="save">Save</string>
+	<string name="doit">Do it</string>
 	<string name="nevermind">Nevermind</string>
-	<string name="save_loc">Enter a location to save your DEFCON log:</string>
+	<string name="save_loc">Are you sure? It will overwrite any previous log you have saved.</string>
 	<string name="clear_log">Clear Log</string>
 
     

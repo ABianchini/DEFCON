@@ -97,31 +97,6 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         }).show();
     }
     
-    /*//pushes log.txt to the root of the SD Card
-    public void onSavetoSDClick(View view) {
-    	InputStream iFile;
-    	
-		try {
-			try {
-				iFile = openFileInput(FILENAME);
-				strFile = inputStreamToString(iFile);
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			File myFile = new File("/sdcard/DEFCON_Log.txt");
-			myFile.createNewFile();
-			FileOutputStream fOut = new FileOutputStream(myFile);
-			OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-			myOutWriter.append(strFile);
-			myOutWriter.close();
-			fOut.close();
-			Toast.makeText(getBaseContext(), "'DEFCON_Log.txt' has been written to SD", Toast.LENGTH_SHORT).show();
-		} catch (Exception e) {
-		}
-    }*/
-    
     //for the "up" button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
