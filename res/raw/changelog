@@ -33,3 +33,5 @@
 1.3.4 - Reselection on boot no longer needed
 
 1.3.5 - Fixed multiple logging of same Defense Condition and added Clear Log function
+
+1.3.6 - Removed Save Log feature from Settings to Log Activity
