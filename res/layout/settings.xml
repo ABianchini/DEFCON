@@ -39,45 +39,4 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:src="@color/grey" />
-        
-    <LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:paddingBottom="6dp"
-	    android:paddingTop="6dp"
-	    android:clickable="true"
-	    android:onClick="onSavetoSDClick" >
-	
-	    <ImageView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/save"
-	        android:layout_gravity="center_vertical"
-	        android:paddingRight="4dp"
-	        android:paddingLeft="4dp"
-	        android:paddingTop="8dp" />
-	    <LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical" >
-	        <TextView
-	            android:layout_height="wrap_content"
-	            android:layout_width="wrap_content"
-	            android:text="@string/save"
-	            android:textStyle="bold"
-	            android:textColor="@color/grey"
-	            android:textSize="@dimen/title_text" />
-	        <TextView
-	            android:layout_height="wrap_content"
-	            android:layout_width="wrap_content"
-	            android:textSize="@dimen/text"
-	            android:textColor="@color/grey"
-	            android:text="@string/save_info" />
-	    </LinearLayout>
-	</LinearLayout>
-	<ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:src="@color/grey" />
 </LinearLayout>

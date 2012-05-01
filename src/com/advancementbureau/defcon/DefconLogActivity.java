@@ -1,27 +1,39 @@
 package com.advancementbureau.defcon;
 
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.advancementbureau.defconwork.R;
 
 public class DefconLogActivity extends SuperDefconActivity {
 	
+	String strFile = "You never set a Defense Condition";
 	String FILENAME = "log.txt";
+	static final int SAVE_LOCATION_ID = 0;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +83,7 @@ public class DefconLogActivity extends SuperDefconActivity {
     	super.onCreateOptionsMenu(menu);
     	getMenuInflater().inflate(R.menu.logoptions, menu);
     	menu.findItem(R.id.clear_log_menu_item);
+    	menu.findItem(R.id.save_log_menu_item);
     	return true;
     }
     
@@ -85,10 +98,66 @@ public class DefconLogActivity extends SuperDefconActivity {
     		try {
 				clearLog();
 			} catch (IOException e) {
-			}
+			} }
+    	if (item.getItemId() == R.id.save_log_menu_item) {
+    		showDialog(SAVE_LOCATION_ID);
     	}
     	return true;
     }
+    
+    @Override
+	protected Dialog onCreateDialog(int id) {
+		switch (id) {
+			case SAVE_LOCATION_ID:
+				LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				final View layout = inflater.inflate(R.layout.save_dialog, (ViewGroup) findViewById(R.id.root));
+				final EditText location = (EditText) layout.findViewById(R.id.SaveLocation_Edit);
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setView(layout);
+				builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+					@SuppressWarnings("deprecation")
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// We forcefully dismiss and remove the Dialog, so
+						// it
+						// cannot be used again (no cached info)
+						DefconLogActivity.this.removeDialog(SAVE_LOCATION_ID);
+					}
+				});
+				builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						String saveLocationString = location.getText().toString();
+						InputStream iFile;
+				    	
+						try {
+							try {
+								iFile = openFileInput(FILENAME);
+								strFile = inputStreamToString(iFile);
+							} catch (FileNotFoundException e1) {
+								e1.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							File myFile = new File("/sdcard/DEFCON_Log.txt");
+							myFile.createNewFile();
+							FileOutputStream fOut = new FileOutputStream(myFile);
+							OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+							myOutWriter.append(strFile);
+							myOutWriter.close();
+							fOut.close();
+							Toast.makeText(getBaseContext(), "'DEFCON_Log.txt' has been written to SD", Toast.LENGTH_SHORT).show();
+						} catch (Exception e) {
+						}
+					}
+				});
+				AlertDialog saveDialog = builder.create();
+				return saveDialog;
+			}
+			return null;
+		}
+		
+			
+    
     public void clearLog() throws IOException {
     	String insertString = "";
     	FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);

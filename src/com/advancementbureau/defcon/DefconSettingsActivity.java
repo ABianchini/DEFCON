@@ -97,7 +97,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         }).show();
     }
     
-    //pushes log.txt to the root of the SD Card
+    /*//pushes log.txt to the root of the SD Card
     public void onSavetoSDClick(View view) {
     	InputStream iFile;
     	
@@ -120,7 +120,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 			Toast.makeText(getBaseContext(), "'DEFCON_Log.txt' has been written to SD", Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 		}
-    }
+    }*/
     
     //for the "up" button
     @Override
