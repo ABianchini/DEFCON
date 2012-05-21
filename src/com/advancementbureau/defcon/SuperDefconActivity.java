@@ -24,9 +24,11 @@ public class SuperDefconActivity extends Activity {
 	public static final String FIRST_BOOT = "boot";
 	public static final String DEFCON = "currentState";
 	public static final String LAST_CONDITION = "lastDefcon";
+	public static final String DEFCON_ALARM = "alarm";
 	
 	public int currentDefcon;
 	public int lastDefcon;
+	public int defconAlarm;
 	
 	String FILENAME = "log.txt";
 	File logFile = new File(FILENAME);

@@ -39,4 +39,41 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:src="@color/grey" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp" >
+
+        <CheckBox
+            android:id="@+id/CheckBox_Alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_gravity="center_vertical"
+            android:onClick="onCheckBoxAlarmClicked" />
+        	<LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	            <TextView
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:text="@string/setting_alarm"
+	                android:textStyle="bold"
+	                android:textSize="@dimen/title_text" />
+	            <TextView
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:textSize="@dimen/text"
+	                android:text="@string/setting_alarm_desc" />
+        	</LinearLayout>
+	</LinearLayout>
+        
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@color/grey" />
+    
 </LinearLayout>

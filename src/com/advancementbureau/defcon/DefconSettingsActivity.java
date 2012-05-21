@@ -1,18 +1,11 @@
 package com.advancementbureau.defcon;
 
 import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
 
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -21,13 +14,13 @@ import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.Toast;
 
 import com.advancementbureau.defconwork.R;
 
 public class DefconSettingsActivity extends SuperDefconActivity {
 	
 	public boolean notifChecked;
+	public boolean alarmChecked;
 	String FILENAME = "log.txt";
 	String strFile = "You never set a defense posture.";
 	Editable saveLoc;
@@ -44,8 +37,12 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 	        ActionBar actionBar2 = getActionBar();
 	        actionBar2.setDisplayHomeAsUpEnabled(true);
         }
-        
-        //checks or unchecks the checkbox depending on the status of PREFERENCES_NOTIFICATION
+    }
+    
+    @Override
+	protected void onResume() {
+		super.onResume();
+		//checks or unchecks the checkbox depending on the status of PREFERENCES_NOTIFICATION
         final CheckBox checkBox = (CheckBox) findViewById(R.id.CheckBox_Notification);
         if (mGameSettings.getBoolean(PREFERENCES_NOTIFICATION, true)) {
             checkBox.setChecked(true);
@@ -54,16 +51,30 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         	checkBox.setChecked(false);
         	notifChecked = false;
         }
-    }
-    @Override
-	protected void onPause() {
-		super.onPause();
-		//commits notifChecked to PREFERENCES_NOTIFICATION
-		
+        final CheckBox checkBoxAlarm = (CheckBox) findViewById(R.id.CheckBox_Alarm);
+        if (mGameSettings.getBoolean(DEFCON_ALARM, false)) {
+            checkBoxAlarm.setChecked(true);
+            alarmChecked = true;
+        } else {
+        	checkBox.setChecked(false);
+        	alarmChecked = false;
+        }
 	}
     
+    public void onCheckBoxAlarmClicked(View v) {
+    	final CheckBox checkBoxAlarm = (CheckBox) findViewById(R.id.CheckBox_Alarm);
+        if (checkBoxAlarm.isChecked()) {
+            alarmChecked = true;
+        } else {
+        	alarmChecked = false;
+        }
+        Editor editor = mGameSettings.edit();
+		editor.putBoolean(DEFCON_ALARM, alarmChecked);
+		editor.commit();
+    }
+    
     /*
-     * Converts the state of the checkbox to the notifChecked variable
+     * Converts the state of the checkbox to the notifChecked variable and commits it to SharedPreferences
      */
     public void onCheckBoxNotificationsClicked(View v) {
     	if (mGameSettings.contains(DEFCON)) {
@@ -83,20 +94,6 @@ public class DefconSettingsActivity extends SuperDefconActivity {
         defconNotify(currentDefcon);
     }
     
-    /*
-     * Makes a dialog box with a title and a message. Used for simple notifications
-     * @param title string id for the title
-     * @param message string id for the message
-    */
-    public void PopUp(int title, int message){
-        new AlertDialog.Builder(this)
-        .setTitle(title)
-        .setMessage(message)
-        .setPositiveButton("Close", new OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {}
-        }).show();
-    }
-    
     //for the "up" button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,6 +104,7 @@ public class DefconSettingsActivity extends SuperDefconActivity {
 			startActivity(intent2); }
     	return true;
     }
+    
     public String inputStreamToString(InputStream is) throws IOException {
     	StringBuffer sBuffer = new StringBuffer();
     	DataInputStream dataIO = new DataInputStream(is);

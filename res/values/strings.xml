@@ -37,6 +37,8 @@
 	<string name="nevermind">Nevermind</string>
 	<string name="save_loc">Are you sure? It will overwrite any previous log you have saved.</string>
 	<string name="clear_log">Clear Log</string>
+	<string name="setting_alarm">Enable Alarm</string>
+	<string name="setting_alarm_desc">If checked, an alarm will sound with each setting of your defense condition.</string>
 
     
 </resources>

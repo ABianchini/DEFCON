@@ -15,6 +15,9 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +31,9 @@ public class DefconActivity extends SuperDefconActivity {
 	
 	public boolean firstBootDone;
 	Date date = Calendar.getInstance().getTime();
+	private SoundPool soundPool;
+	private int soundID;
+	boolean loaded = false;
 	
     /** Called when the activity is first created. */
     @Override
@@ -56,6 +62,15 @@ public class DefconActivity extends SuperDefconActivity {
             PopUp(R.string.pop_notif, R.string.pop_notif_info); 
         }
         
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+        soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+        	public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+        		loaded = true;
+        	}
+        });
+        soundID = soundPool.load(this, R.raw.alarm, 1);
+        
         /*
          * The next 10 statements run every time the Defense Status is clicked or long clicked
          * Click: notification of status, changes colors of buttons, and records the log
@@ -68,6 +83,7 @@ public class DefconActivity extends SuperDefconActivity {
         		currentDefcon = 1;
         		//sets color scheme of Defense Status buttons to reflect current Defense Status
         		colors(currentDefcon);
+        		defconAlarm();
         		//records Defense Status selection to a log
         		try {
 					keepLog(1);
@@ -88,6 +104,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(2);
         		currentDefcon = 2;
+        		defconAlarm();
         		try {
 					keepLog(2);
 				} catch (IOException e) {
@@ -108,6 +125,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(3);
         		currentDefcon = 3;
+        		defconAlarm();
         		try {
 					keepLog(3);
 				} catch (IOException e) {
@@ -128,6 +146,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(4);
         		currentDefcon = 4;
+        		defconAlarm();
         		try {
 					keepLog(4);
 				} catch (IOException e) {
@@ -148,6 +167,7 @@ public class DefconActivity extends SuperDefconActivity {
         	public void onClick(View view) {
         		defconNotify(5);
         		currentDefcon = 5;
+        		defconAlarm();
         		try {
 					keepLog(5);
 				} catch (IOException e) {
@@ -369,6 +389,20 @@ public class DefconActivity extends SuperDefconActivity {
 	    	}
 	    	fos.write(insertString.getBytes());
 	    	fos.close();
+    	}
+    }
+    
+    public void defconAlarm() {
+    	SharedPreferences bootPref = getSharedPreferences(DEFCON_ALARM, MODE_PRIVATE);
+    	
+    	if(bootPref.getBoolean(DEFCON_ALARM, false)) {
+	    	AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+			float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+			float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+			float volume = actualVolume / maxVolume;
+			if (loaded) {
+				soundPool.play(soundID, volume, volume, 1, 0, 1f);
+			}
     	}
     }
     
