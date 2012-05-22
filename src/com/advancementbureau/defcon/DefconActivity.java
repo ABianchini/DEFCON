@@ -34,6 +34,7 @@ public class DefconActivity extends SuperDefconActivity {
 	private SoundPool soundPool;
 	private int soundID;
 	boolean loaded = false;
+	private int soundChoice;
 	
     /** Called when the activity is first created. */
     @Override
@@ -62,14 +63,7 @@ public class DefconActivity extends SuperDefconActivity {
             PopUp(R.string.pop_notif, R.string.pop_notif_info); 
         }
         
-        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-        soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
-        	public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-        		loaded = true;
-        	}
-        });
-        soundID = soundPool.load(this, R.raw.alarm, 1);
+        
         
         /*
          * The next 10 statements run every time the Defense Status is clicked or long clicked
@@ -214,6 +208,17 @@ public class DefconActivity extends SuperDefconActivity {
 			keepLog(currentDefcon);
 		} catch (IOException e1) {
 		}
+        soundChoice = mGameSettings.getInt(SOUND_CHOICE, 0);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+        soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+        	public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+        		loaded = true;
+        	}
+        });
+        if (soundChoice == 0) soundID = soundPool.load(this, R.raw.alarm, 1);
+        if (soundChoice == 1) soundID = soundPool.load(this, R.raw.alert, 1);
+        if (soundChoice == 2) soundID = soundPool.load(this, R.raw.black_ops, 1);
 	}
     
 	/*
@@ -393,9 +398,7 @@ public class DefconActivity extends SuperDefconActivity {
     }
     
     public void defconAlarm() {
-    	SharedPreferences bootPref = getSharedPreferences(DEFCON_ALARM, MODE_PRIVATE);
-    	
-    	if(bootPref.getBoolean(DEFCON_ALARM, false)) {
+    	if(mGameSettings.getBoolean(DEFCON_ALARM, false)) {
 	    	AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 			float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 			float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);

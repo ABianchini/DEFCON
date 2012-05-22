@@ -25,6 +25,7 @@ public class SuperDefconActivity extends Activity {
 	public static final String DEFCON = "currentState";
 	public static final String LAST_CONDITION = "lastDefcon";
 	public static final String DEFCON_ALARM = "alarm";
+	public static final String SOUND_CHOICE = "sound";
 	
 	public int currentDefcon;
 	public int lastDefcon;

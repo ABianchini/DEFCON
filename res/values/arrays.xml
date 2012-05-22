@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sound_choice">
+        <item>@string/alarm</item>
+    	<item>@string/alert</item>
+    	<item>@string/blackops</item>
+   	</string-array>
+    
+</resources>

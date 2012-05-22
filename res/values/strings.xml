@@ -39,6 +39,12 @@
 	<string name="clear_log">Clear Log</string>
 	<string name="setting_alarm">Enable Alarm</string>
 	<string name="setting_alarm_desc">If checked, an alarm will sound with each setting of your defense condition.</string>
+	<string name="alarm">Alarm</string>
+	<string name="alert">Alert</string>
+	<string name="blackops">BlackOps</string>
+	<string name="choose_prompt">Choose a sound:</string>
+	<string name="sample">Sample</string>
+	<string name="choose_sound">Choose Sound</string>
 
     
 </resources>

@@ -35,3 +35,5 @@
 1.3.5 - Fixed multiple logging of same Defense Condition and added Clear Log function
 
 1.3.6 - Removed Save Log feature from Settings to Log Activity
+
+1.4.0 - Added setting for sound to play with each Defense Condition selection. Can also select from 3 sounds
