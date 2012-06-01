@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/settings_menu_item"
-        android:title="@string/settings"
-        android:icon="@drawable/settings"
+        android:id="@+id/current_menu_item"
+        android:title="@string/current"
+        android:icon="@drawable/map"
         android:showAsAction="always|withText" ></item>
     <item
         android:id="@+id/log_menu_item"
         android:title="@string/log"
         android:icon="@drawable/list"
         android:showAsAction="always|withText" ></item>
+    <item
+        android:id="@+id/settings_menu_item"
+        android:title="@string/settings"
+        android:icon="@drawable/settings"
+        android:showAsAction="ifRoom|withText" ></item>
     <item
         android:id="@+id/changelog_menu_item"
         android:title="@string/changelog"

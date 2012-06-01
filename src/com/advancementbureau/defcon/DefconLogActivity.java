@@ -22,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +33,7 @@ public class DefconLogActivity extends SuperDefconActivity {
 	String strFile = "You never set a Defense Condition";
 	String FILENAME = "log.txt";
 	static final int SAVE_LOCATION_ID = 0;
+	static final int DELETE_ID = 1;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,10 +95,7 @@ public class DefconLogActivity extends SuperDefconActivity {
 			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent2); }
     	if (item.getItemId() == R.id.clear_log_menu_item) {
-    		try {
-				clearLog();
-			} catch (IOException e) {
-			} }
+			showDialog(DELETE_ID); }
     	if (item.getItemId() == R.id.save_log_menu_item) {
     		showDialog(SAVE_LOCATION_ID);
     	}
@@ -150,6 +147,53 @@ public class DefconLogActivity extends SuperDefconActivity {
 				});
 				AlertDialog saveDialog = builder.create();
 				return saveDialog;
+			case DELETE_ID:
+				LayoutInflater inflater1 = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				final View layout1 = inflater1.inflate(R.layout.save_dialog, (ViewGroup) findViewById(R.id.root));
+				AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+				builder1.setView(layout1);
+				builder1.setNegativeButton(R.string.nevermind, new DialogInterface.OnClickListener() {
+					@SuppressWarnings("deprecation")
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// We forcefully dismiss and remove the Dialog, so
+						// it
+						// cannot be used again (no cached info)
+						DefconLogActivity.this.removeDialog(DELETE_ID);
+					}
+				});
+				builder1.setPositiveButton(R.string.doit, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						String insertString = "";
+				    	FileOutputStream fos;
+						try {
+							fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+							fos.write(insertString.getBytes());
+							fos.close();
+						} catch (FileNotFoundException e2) {
+							e2.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				    	
+				    	Editor editor = mGameSettings.edit();
+				    	editor.putInt(LAST_CONDITION, 0);
+				    	editor.commit();
+				    	InputStream iFile;
+						try {
+							iFile = openFileInput(FILENAME);
+							TextView logText = (TextView) findViewById(R.id.TextView_LogText);
+				        	String strFile = inputStreamToString(iFile);
+				        	logText.setText(strFile);
+						} catch (FileNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				AlertDialog deleteDialog = builder1.create();
+				return deleteDialog;
 			}
 			return null;
 		}

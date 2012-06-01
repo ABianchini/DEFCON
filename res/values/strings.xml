@@ -45,6 +45,8 @@
 	<string name="choose_prompt">Choose a sound:</string>
 	<string name="sample">Sample</string>
 	<string name="choose_sound">Choose Sound</string>
+	<string name="delete_dialog">Are you sure you want to delete all DEFCON History?</string>
+	<string name="current">Current DEFCON</string>
 
     
 </resources>
