@@ -271,10 +271,10 @@ public class DefconActivity extends SuperDefconActivity {
     	//Log
     	if (item.getItemId() == R.id.log_menu_item) {
     		startActivity(item.getIntent());
-    	}
+    	}/*
     	if (item.getItemId() == R.id.current_menu_item) {
     		currentDefconToast();
-    	}
+    	}*/
     	return true;
     }
     
@@ -455,13 +455,10 @@ public class DefconActivity extends SuperDefconActivity {
                 }
             }
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JSONException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return listItems;
