@@ -5,6 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -15,6 +19,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -30,7 +37,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -425,33 +431,40 @@ public class DefconActivity extends SuperDefconActivity {
     }
     
     public void currentDefconToast() {
-    	StringBuilder builder = new StringBuilder();
-		HttpClient client = new DefaultHttpClient();
-		HttpGet httpGet = new HttpGet("http://members.tripod.com/~Swat_25/defcon.html");
-		try {
-			HttpResponse response = client.execute(httpGet);
-			StatusLine statusLine = response.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			if (statusCode == 200) {
-				HttpEntity entity = response.getEntity();
-				InputStream content = entity.getContent();
-				BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-				String line;
-				while ((line = reader.readLine()) != null) {
-					builder.append(line);
-				}
-			} else {
-				
-			}
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String webPage = builder.toString();
-		int index = webPage.indexOf("The current Terrorist Threat Condition (THREATCON) for the United States is:") + 113;
-		String currentUSDefcon = webPage.substring(index, index + 1);
-		Toast.makeText(this, "Defcon "+ currentUSDefcon, 1000).show();
+		ArrayList<String> twitterArray = fetchTwitterPublicTimeline();
+		String toast = "";
+		toast = twitterArray.get(twitterArray.size() - 1);
+		Toast.makeText(this, toast, 1000).show();
+    }
+    
+    public ArrayList<String> fetchTwitterPublicTimeline()
+    {
+        ArrayList<String> listItems = new ArrayList<String>();
+        try {
+            URL twitter = new URL("http://twitter.com/statuses/user_timeline/defconstatus.json");
+            URLConnection tc = twitter.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(tc.getInputStream()));
+ 
+            String line;
+            while ((line = in.readLine()) != null) {
+                JSONArray ja = new JSONArray(line);
+ 
+                for (int i = 0; i < ja.length(); i++) {
+                    JSONObject jo = (JSONObject) ja.get(i);
+                    listItems.add(jo.getString("text"));
+                }
+            }
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return listItems;
     }
     
     /*
