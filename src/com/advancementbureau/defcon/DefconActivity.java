@@ -427,7 +427,7 @@ public class DefconActivity extends SuperDefconActivity {
     public void currentDefconToast() {
     	StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
-		HttpGet httpGet = new HttpGet("http://defconwarningsystem.com/");
+		HttpGet httpGet = new HttpGet("http://members.tripod.com/~Swat_25/defcon.html");
 		try {
 			HttpResponse response = client.execute(httpGet);
 			StatusLine statusLine = response.getStatusLine();
@@ -449,6 +449,9 @@ public class DefconActivity extends SuperDefconActivity {
 			e.printStackTrace();
 		}
 		String webPage = builder.toString();
+		int index = webPage.indexOf("The current Terrorist Threat Condition (THREATCON) for the United States is:") + 113;
+		String currentUSDefcon = webPage.substring(index, index + 1);
+		Toast.makeText(this, "Defcon "+ currentUSDefcon, 1000).show();
     }
     
     /*
